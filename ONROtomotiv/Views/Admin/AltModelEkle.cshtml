@@ -1,0 +1,91 @@
+﻿
+@{
+    ViewBag.Title = "AltModelEkle";
+    Layout = "~/Shared/_LayoutAdminIndex.cshtml";
+}
+
+<div>
+    <form action="" method="post">
+        <span>Kategori</span>
+        <select name="ddlKategori">
+            @foreach (Category item in ViewBag.Kategoriler)
+            {
+                <option>@item.CategoryName</option>
+            }
+        </select>
+        <br />
+        <span>Marka</span>
+        <select name="ddlMarka">
+            @foreach (Brand item in ViewBag.Markalar)
+            {
+                <option>@item.BrandName</option>
+            }
+        </select>
+        <br />
+        <span>Seri</span>
+        <select name="ddlSeri">
+            @foreach (Series item in ViewBag.Seriler)
+            {
+                <option>@item.SerieName</option>
+            }
+        </select>
+        <br />
+        <span>Model</span>
+        <select name="ddlModel">
+            @foreach (Model item in ViewBag.Modeller)
+            {
+                <option>@item.ModelName</option>
+            }
+        </select>
+        <br />
+        <span>Alt Model Adı:</span> <input type="text" name="txtAltModelAdi" value="" required/>
+        @if (ViewBag.Hata1 != null)
+        {
+            string hatalar = ViewBag.Hata1;
+            <span>@hatalar</span>
+        }
+        <br />
+        <input type="submit" name="name" value="Ekle" />
+    </form>
+</div>
+
+@section Login{
+    @if (Session["AdminID"] == null)
+    {
+        <div class="collapse navbar-collapse navbarSec">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="/Admin/Login">Giriş Yap</a></li>
+            </ul>
+        </div>
+    }
+    else
+    {
+        <div class="collapse navbar-collapse navbarSec">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="/Admin/Logout">Çıkış Yap</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Araç Ekle <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/Admin/KategoriEkle">Kategori Ekle</a></li>
+                        <li><a href="/Admin/MarkaEkle">Marka Ekle</a></li>
+                        <li><a href="/Admin/SeriEkle">Seri Ekle</a></li>
+                        <li><a href="/Admin/ModelEkle">Model Ekle</a></li>
+                        <li><a href="/Admin/AltModelEkle">Altmodel Ekle</a></li>
+                        <li><a href="/Admin/AracEkle">Araç Ekle</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Araç Listele <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/Admin/KategoriListele">Kategori Listele</a></li>
+                        <li><a href="/Admin/MarkaListele">Marka Listele</a></li>
+                        <li><a href="/Admin/SeriListele">Seri Listele</a></li>
+                        <li><a href="/Admin/ModelListele">Model Listele</a></li>
+                        <li><a href="/Admin/AltModelListele">Altmodel Listele</a></li>
+                        <li><a href="/Admin/AracListele">Araç Listele</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    }
+}

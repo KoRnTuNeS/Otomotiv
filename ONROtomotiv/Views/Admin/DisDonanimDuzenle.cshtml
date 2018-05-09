@@ -1,0 +1,103 @@
+﻿
+@{
+    ViewBag.Title = "DisDonanimDuzenle";
+    Layout = "~/Shared/_LayoutAdminIndex.cshtml";
+}
+@model OuterEquipment
+
+<div>
+    <form action="" method="post">
+        <div id="sol" style="float:left; margin-left:20%;">
+            @Html.CheckBoxFor(x => x.AkilliBagajKapagi) <span>Akıllı Bagaj Kapağı</span>
+            <br />
+            @Html.CheckBoxFor(x => x.AlasimliJant) <span>Alaşımlı Jant</span>
+            <br />
+            @Html.CheckBoxFor(x => x.ArkaCamBuzCozucu) <span>Arka Cam Buz Çözücü</span>
+            <br />
+            @Html.CheckBoxFor(x => x.Aynalar_Elektrikli) <span>Aynalar (Elektrikli)</span>
+            <br />
+            @Html.CheckBoxFor(x => x.Aynalar_Hafizali) <span>Aynalar (Hafızalı)</span>
+            <br />
+            @Html.CheckBoxFor(x => x.Aynalar_Isitmali) <span>Aynalar (Isıtmalı)</span>
+            <br />
+            @Html.CheckBoxFor(x => x.Aynalar_Katlanir) <span>Aynalar (Katlanır)</span>
+            <br />
+            @Html.CheckBoxFor(x => x.Far_Adaptif) <span>Far (Adaptif)</span>
+            <br />
+            @Html.CheckBoxFor(x => x.Far_BiXenon) <span>Far (BiXenon)</span>
+            <br />
+            @Html.CheckBoxFor(x => x.Far_Halojen) <span>Far (Halojen)</span>
+            <br />
+            @Html.CheckBoxFor(x => x.Far_LED) <span>Far (LED)</span>
+            <br />
+            @Html.CheckBoxFor(x => x.Far_Sis) <span>Far (Sis)</span>
+            <br />
+            @Html.CheckBoxFor(x => x.Far_Xenon) <span>Far (Xenon)</span>
+        </div>
+        <div id="sag" style="margin-left:50%;">           
+            @Html.CheckBoxFor(x => x.Far_Yikama) <span>Far (Yıkama)</span>
+            <br />
+            @Html.CheckBoxFor(x => x.FarGeceSensoru) <span>Far Gece Sensörü</span>
+            <br />
+            @Html.CheckBoxFor(x => x.Hardtop) <span>Hardtop</span>
+            <br />
+            @Html.CheckBoxFor(x => x.PanoramikCamTavan) <span>Panoramik Cam Tavan</span>
+            <br />
+            @Html.CheckBoxFor(x => x.PanoramikOnCam) <span>Panaromik Ön Tavan</span>
+            <br />
+            @Html.CheckBoxFor(x => x.ParkSensoru_Arka) <span>Park Sensörü (Arka)</span>
+            <br />
+            @Html.CheckBoxFor(x => x.ParkSensoru_On) <span>Park Sensörü (Ön)</span>
+            <br />
+            @Html.CheckBoxFor(x => x.RomorkCekiDemiri) <span>Römork Çeki Demiri</span>
+            <br />
+            @Html.CheckBoxFor(x => x.Sunroof) <span>Sunroof</span>
+            <br />
+            @Html.CheckBoxFor(x => x.YagmurSensoru) <span>Yağmur Sensörü</span>
+            <br />
+            <br />
+            <input type="submit" name="name" style="margin-left:7%; margin-top:1%;" value="Kaydet" />
+        </div>
+    </form>
+</div>
+
+@section Login{
+    @if (Session["AdminID"] == null)
+    {
+        <div class="collapse navbar-collapse navbarSec">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="/Admin/Login">Giriş Yap</a></li>
+            </ul>
+        </div>
+    }
+    else
+    {
+        <div class="collapse navbar-collapse navbarSec">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="/Admin/Logout">Çıkış Yap</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Araç Ekle <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/Admin/KategoriEkle">Kategori Ekle</a></li>
+                        <li><a href="/Admin/MarkaEkle">Marka Ekle</a></li>
+                        <li><a href="/Admin/SeriEkle">Seri Ekle</a></li>
+                        <li><a href="/Admin/ModelEkle">Model Ekle</a></li>
+                        <li><a href="/Admin/AltModelEkle">Altmodel Ekle</a></li>
+                        <li><a href="/Admin/AracEkle">Araç Ekle</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Araç Listele <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/Admin/KategoriListele">Kategori Listele</a></li>
+                        <li><a href="/Admin/MarkaListele">Marka Listele</a></li>
+                        <li><a href="/Admin/SeriListele">Seri Listele</a></li>
+                        <li><a href="/Admin/ModelListele">Model Listele</a></li>
+                        <li><a href="/Admin/AltModelListele">Altmodel Listele</a></li>
+                        <li><a href="/Admin/AracListele">Araç Listele</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    }
+}

@@ -1,0 +1,406 @@
+﻿@{
+    ViewBag.Title = "Karsilastirma";
+    Layout = "~/Shared/_LayoutKarsilastirma.cshtml";
+}
+
+
+@section Head{
+    <style>
+        img.alper {
+            height: 293px !important;
+            max-height: 293px !important;
+        }
+    </style>
+}
+@{ List<Vehicle> a = (List<Vehicle>)Session["AracListe"];}
+@if (Session["AracListe"] == null)
+{
+    <div>
+        <form action="/Home/KarsilastirmaEkle/" method="post">
+            <select name="ddlArac">
+                @foreach (Vehicle item in ViewBag.Araclar)
+                {
+                    <option>@item.ProductName</option>
+                }
+            </select>
+            <input type="submit" name="name" value="Ekle" />
+        </form>
+    </div>
+}
+else
+{
+
+    List<Vehicle> liste = (List<Vehicle>)Session["AracListe"];
+
+    if (liste.Count == 1)
+    {
+
+        <div>
+            <form action="/Home/KarsilastirmaEkle/" method="post">
+                <select name="ddlArac">
+                    @foreach (Vehicle item in ViewBag.Araclar)
+                    {
+                        <option>@item.ProductName</option>
+                    }
+                </select>
+                <input type="submit" name="name" value="Ekle" />
+            </form>
+        </div>
+
+        <div class="row">
+            @foreach (Vehicle item in liste)
+            {
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="porche margin-bottom-25">
+                        <div class="porche-header padding-top-15 padding-bottom-10">
+                            <span>@item.ProductName</span>
+                            <strong>@item.SaleInfos.Select(x => x.ListingPrice).FirstOrDefault().ToString("c2")</strong>
+                        </div>
+                        <div class="porche-img padding-bottom-15"> <img class="alper" src="@item.MasterPhotoPath" alt=""></div>
+                        <div class="car-detail clearfix">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <td>Marka:</td>
+                                            <td>@item.Brand.BrandName</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Model:</td>
+                                            <td>@item.Model.ModelName</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Kasa Tipi:</td>
+                                            <td>@item.BodyType.BodyTypeName</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Vites:</td>
+                                            <td>@item.TransmissionType.TransmissionTypeName</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Çekiş:</td>
+                                            <td>@item.WheelDriveType.WheelDriveTypeName</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Renk:</td>
+                                            <td>@item.Color.ColorName</td>
+                                        </tr>
+                                        <tr>
+                                            <td>KM:</td>
+                                            <td>@item.KM</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Motor Hacmi:</td>
+                                            <td>@item.EngineCapacity</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Motor Gücü:</td>
+                                            <td>@item.EngineHP</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Yakıt:</td>
+                                            <td>@item.FuelType.FuelTypeName</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Durum:</td>
+                                            @if (item.Condition == true)
+                                            {
+                                                <td>İkinci El</td>
+                                            }
+                                            else
+                                            {
+                                                <td>Sıfır</td>
+                                            }
+                                        </tr>
+                                        <tr>
+                                            <td>Takas:</td>
+                                            @if (item.Trade == true)
+                                            {
+                                                <td>Var</td>
+                                            }
+                                            else
+                                            {
+                                                <td>Yok</td>
+                                            }
+                                        </tr>
+                                        <tr>
+                                            <td>Garanti:</td>
+                                            @if (item.Warranty == true)
+                                            {
+                                                <td>Var</td>
+                                            }
+                                            else
+                                            {
+                                                <td>Yok</td>
+                                            }
+                                        </tr>
+                                        <tr>
+                                            <td>Plaka/Uyruk:</td>
+                                            <td>@item.Region</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="porche-footer margin-top-25 padding-top-20 padding-bottom-15">
+                                <a style="color: #337ab7; text-decoration: none; text-decoration: underline;" href="/Home/KarsilastirmadanSil/@item.ID">Karşılaştırmadan Sil</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        if (a.Count == 0)
+        {
+            <div>
+                <form action="/Home/KarsilastirmaEkle/" method="post">
+                    <select name="ddlArac">
+                        @foreach (Vehicle item in ViewBag.Araclar)
+                        {
+                            <option>@item.ProductName</option>
+                        }
+                    </select>
+                    <input type="submit" name="name" value="Ekle" />
+                </form>
+            </div>
+        }
+        else
+        {
+            <div class="row">
+                @foreach (Vehicle item in liste)
+                {
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="porche margin-bottom-25">
+                            <div class="porche-header padding-top-15 padding-bottom-10">
+                                <span>@item.ProductName</span>
+                                <strong>@item.SaleInfos.Select(x => x.ListingPrice).FirstOrDefault().ToString("c2")</strong>
+                            </div>
+                            <div class="porche-img padding-bottom-15"> <img class="alper" src="@item.MasterPhotoPath" alt=""></div>
+                            <div class="car-detail clearfix">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <tbody>
+                                            <tr>
+                                                <td>Marka:</td>
+                                                <td>@item.Brand.BrandName</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Model:</td>
+                                                <td>@item.Model.ModelName</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Kasa Tipi:</td>
+                                                <td>@item.BodyType.BodyTypeName</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Vites:</td>
+                                                <td>@item.TransmissionType.TransmissionTypeName</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Çekiş:</td>
+                                                <td>@item.WheelDriveType.WheelDriveTypeName</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Renk:</td>
+                                                <td>@item.Color.ColorName</td>
+                                            </tr>
+                                            <tr>
+                                                <td>KM:</td>
+                                                <td>@item.KM</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Motor Hacmi:</td>
+                                                <td>@item.EngineCapacity</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Motor Gücü:</td>
+                                                <td>@item.EngineHP</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Yakıt:</td>
+                                                <td>@item.FuelType.FuelTypeName</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Durum:</td>
+                                                @if (item.Condition == true)
+                                                {
+                                                    <td>İkinci El</td>
+                                                }
+                                                else
+                                                {
+                                                    <td>Sıfır</td>
+                                                }
+                                            </tr>
+                                            <tr>
+                                                <td>Takas:</td>
+                                                @if (item.Trade == true)
+                                                {
+                                                    <td>Var</td>
+                                                }
+                                                else
+                                                {
+                                                    <td>Yok</td>
+                                                }
+                                            </tr>
+                                            <tr>
+                                                <td>Garanti:</td>
+                                                @if (item.Warranty == true)
+                                                {
+                                                    <td>Var</td>
+                                                }
+                                                else
+                                                {
+                                                    <td>Yok</td>
+                                                }
+                                            </tr>
+                                            <tr>
+                                                <td>Plaka/Uyruk:</td>
+                                                <td>@item.Region</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="porche-footer margin-top-25 padding-top-20 padding-bottom-15">
+                                    <a style="color: #337ab7; text-decoration: none; text-decoration: underline;" href="/Home/KarsilastirmadanSil/@item.ID">Karşılaştırmadan Sil</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    }
+
+}
+
+@section Navbar{
+    @if (Session["KullaniciID"] == null)
+    {
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav pull-right">
+                <li><a href="/Home/Index">Ana Sayfa</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Araçlar <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/Home/Listele">Araç Listele</a></li>
+                        <li><a href="/Home/Karsilastirma">Araç Karşılaştır</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Inventory <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="demo.html">Select View Demo</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Boxed Layout <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="inventory-boxed-fullwidth.html">Boxed Fullwidth</a></li>
+                                <li><a href="inventory-boxed-sidebar-left.html">Boxed Sidebar Left</a></li>
+                                <li><a href="inventory-boxed-sidebar-right.html">Boxed Sidebar Right</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Wide Layout <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="inventory-wide-fullwidth.html">Wide Fullwidth</a></li>
+                                <li><a href="inventory-wide-sidebar-left.html">Wide Sidebar Left</a></li>
+                                <li><a href="inventory-wide-sidebar-right.html">Wide Sidebar Right</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="inventory-listing.html">Individual Listing</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Vehicle Comparison <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="inventory-2-listing-comparison.html">2 Listing Comparison</a></li>
+                                <li><a href="inventory-3-listing-comparison.html">3 Listing Comparison</a></li>
+                                <li><a href="inventory-4-listing-comparison.html">4 Listing Comparison</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="service.html">Services</a></li>
+                <li><a href="our-team.html">Our Team</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="portfolio-2-column.html">2 Column Portfolio</a></li>
+                        <li><a href="portfolio-2-column-details.html">2 Column Portfolio Details</a></li>
+                        <li><a href="portfolio-3-column.html">3 Column Portfolio</a></li>
+                        <li><a href="portfolio-3-column-details.html">3 Column Portfolio Details</a></li>
+                        <li><a href="portfolio-4-column.html">4 Column Portfolio</a></li>
+                        <li><a href="portfolio-4-column-details.html">4 Column Portfolio Details</a></li>
+                        <li><a href="portfolio-single-project-split.html">Portfolio Single Project Split</a></li>
+                        <li><a href="portfolio-single-project-wide.html">Portfolio Single Project Wide</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="blog.html">Blog List</a></li>
+                        <li><a href="blog-post.html">Blog Single Post</a></li>
+                    </ul>
+                </li>
+                <li><a href="/Home/Contact">İletİşİm</a></li>
+            </ul>
+        </div>
+    }
+    else
+    {
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav pull-right">
+                <li class="dropdown active"><a href="/Home/Index">Anasayfa</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">İşlemlerİm <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/Home/Tekliflerim">Tekliflerim</a></li>
+                        <li><a href="/Home/UserDetails">Kayıt Bilgilerim</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Araçlar <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/Home/Listele">Araç Listele</a></li>
+                        <li><a href="/Home/Karsilastirma">Araç Karşılaştır</a></li>
+                    </ul>
+                </li>
+                <li><a href="our-team.html">Our Team</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="portfolio-2-column.html">2 Column Portfolio</a></li>
+                        <li><a href="portfolio-2-column-details.html">2 Column Portfolio Details</a></li>
+                        <li><a href="portfolio-3-column.html">3 Column Portfolio</a></li>
+                        <li><a href="portfolio-3-column-details.html">3 Column Portfolio Details</a></li>
+                        <li><a href="portfolio-4-column.html">4 Column Portfolio</a></li>
+                        <li><a href="portfolio-4-column-details.html">4 Column Portfolio Details</a></li>
+                        <li><a href="portfolio-single-project-split.html">Portfolio Single Project Split</a></li>
+                        <li><a href="portfolio-single-project-wide.html">Portfolio Single Project Wide</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="blog.html">Blog List</a></li>
+                        <li><a href="blog-post.html">Blog Single Post</a></li>
+                    </ul>
+                </li>
+                <li><a href="/Home/Contact">İletİşİm</a></li>
+            </ul>
+        </div>
+    }
+}
+
+@section Login{
+    @if (Session["KullaniciID"] == null)
+    {
+        <li><a href="/Home/Register"><i class="fa fa-user-plus"></i> Kayıt Ol</a></li>
+        <li><a href="/Home/Login"><i class="fa fa-sign-in"></i> Giriş Yap</a></li>
+    }
+    else
+    {
+        int userID = (int)Session["KullaniciID"];
+        <li><a href="/Home/UserDetails/"><i class="fa fa-user"></i> Kullanıcı Detayı</a></li>
+        <li><a href="/Home/Logout"><i class="fa fa-power-off"></i> Çıkış Yap</a></li>
+    }
+}

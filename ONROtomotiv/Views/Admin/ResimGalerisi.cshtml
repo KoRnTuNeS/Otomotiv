@@ -1,0 +1,75 @@
+﻿
+@{
+    ViewBag.Title = "ResimGalerisi";
+    Layout = "~/Shared/_LayoutAdminIndex.cshtml";
+}
+@model List<Photo>
+
+<div id="form">
+    @using (Html.BeginForm("ResimGalerisi", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <span>Resim Ekle:</span> <input type="file" name="fuResim" value=""/>
+        if (ViewBag.Hata1 != null)
+        {
+            string hatalar = ViewBag.Hata1;
+            <span>@hatalar</span>
+        }
+        <br />
+        <input type="submit" value="Ekle" />
+    }    
+</div>
+<div id="galeri" style="margin-top:10%">
+    <span style="margin-top:-4%; position:absolute;">Eklenmiş Resimler:</span>
+    @if (Model.Count == 0)
+    {
+        <span>Galeri boş</span>
+    }
+    else
+    {
+        foreach (Photo item in Model)
+        {
+            <a href="/Admin/ResmiDuzenle/@item.ID"><img src="@item.PhotoPath" style="float:left; height:10%; width:10%;"></a>
+        }
+    }
+</div>
+
+@section Login{
+    @if (Session["AdminID"] == null)
+    {
+        <div class="collapse navbar-collapse navbarSec">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="/Admin/Login">Giriş Yap</a></li>
+            </ul>
+        </div>
+    }
+    else
+    {
+        <div class="collapse navbar-collapse navbarSec">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="/Admin/Logout">Çıkış Yap</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Araç Ekle <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/Admin/KategoriEkle">Kategori Ekle</a></li>
+                        <li><a href="/Admin/MarkaEkle">Marka Ekle</a></li>
+                        <li><a href="/Admin/SeriEkle">Seri Ekle</a></li>
+                        <li><a href="/Admin/ModelEkle">Model Ekle</a></li>
+                        <li><a href="/Admin/AltModelEkle">Altmodel Ekle</a></li>
+                        <li><a href="/Admin/AracEkle">Araç Ekle</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Araç Listele <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/Admin/KategoriListele">Kategori Listele</a></li>
+                        <li><a href="/Admin/MarkaListele">Marka Listele</a></li>
+                        <li><a href="/Admin/SeriListele">Seri Listele</a></li>
+                        <li><a href="/Admin/ModelListele">Model Listele</a></li>
+                        <li><a href="/Admin/AltModelListele">Altmodel Listele</a></li>
+                        <li><a href="/Admin/AracListele">Araç Listele</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    }
+}

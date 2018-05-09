@@ -1,0 +1,175 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Shared/_LayoutIndex.cshtml";
+}
+
+@section Login{
+    @if (Session["KullaniciID"] == null)
+    {
+        <li><a href="/Home/Register"><i class="fa fa-user-plus"></i> Kayıt Ol</a></li>
+        <li><a href="/Home/Login"><i class="fa fa-sign-in"></i> Giriş Yap</a></li>
+    }
+    else
+    {
+        int userID = (int)Session["KullaniciID"];
+        <li><a href="/Home/UserDetails/"><i class="fa fa-user"></i> Kullanıcı Detayı</a></li>
+        <li><a href="/Home/Logout"><i class="fa fa-power-off"></i> Çıkış Yap</a></li>
+    }
+}
+@section Navbar{
+    @if (Session["KullaniciID"] == null)
+    {
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav pull-right">
+                <li><a href="/Home/Index">Ana Sayfa</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Araçlar <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/Home/Listele">Araç Listele</a></li>
+                        <li><a href="/Home/Karsilastirma">Araç Karşılaştır</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Inventory <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="demo.html">Select View Demo</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Boxed Layout <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="inventory-boxed-fullwidth.html">Boxed Fullwidth</a></li>
+                                <li><a href="inventory-boxed-sidebar-left.html">Boxed Sidebar Left</a></li>
+                                <li><a href="inventory-boxed-sidebar-right.html">Boxed Sidebar Right</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Wide Layout <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="inventory-wide-fullwidth.html">Wide Fullwidth</a></li>
+                                <li><a href="inventory-wide-sidebar-left.html">Wide Sidebar Left</a></li>
+                                <li><a href="inventory-wide-sidebar-right.html">Wide Sidebar Right</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="inventory-listing.html">Individual Listing</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Vehicle Comparison <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="inventory-2-listing-comparison.html">2 Listing Comparison</a></li>
+                                <li><a href="inventory-3-listing-comparison.html">3 Listing Comparison</a></li>
+                                <li><a href="inventory-4-listing-comparison.html">4 Listing Comparison</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="service.html">Services</a></li>
+                <li><a href="our-team.html">Our Team</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="portfolio-2-column.html">2 Column Portfolio</a></li>
+                        <li><a href="portfolio-2-column-details.html">2 Column Portfolio Details</a></li>
+                        <li><a href="portfolio-3-column.html">3 Column Portfolio</a></li>
+                        <li><a href="portfolio-3-column-details.html">3 Column Portfolio Details</a></li>
+                        <li><a href="portfolio-4-column.html">4 Column Portfolio</a></li>
+                        <li><a href="portfolio-4-column-details.html">4 Column Portfolio Details</a></li>
+                        <li><a href="portfolio-single-project-split.html">Portfolio Single Project Split</a></li>
+                        <li><a href="portfolio-single-project-wide.html">Portfolio Single Project Wide</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="blog.html">Blog List</a></li>
+                        <li><a href="blog-post.html">Blog Single Post</a></li>
+                    </ul>
+                </li>
+                <li><a href="/Home/Contact">İletİşİm</a></li>
+            </ul>
+        </div>
+    }
+    else
+    {
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav pull-right">
+                <li class="dropdown active"><a href="/Home/Index">Anasayfa</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">İşlemlerİm <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/Home/Tekliflerim">Tekliflerim</a></li>
+                        <li><a href="/Home/UserDetails">Kayıt Bilgilerim</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Araçlar <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/Home/Listele">Araç Listele</a></li>
+                        <li><a href="/Home/Karsilastirma">Araç Karşılaştır</a></li>
+                    </ul>
+                </li>
+                <li><a href="our-team.html">Our Team</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="portfolio-2-column.html">2 Column Portfolio</a></li>
+                        <li><a href="portfolio-2-column-details.html">2 Column Portfolio Details</a></li>
+                        <li><a href="portfolio-3-column.html">3 Column Portfolio</a></li>
+                        <li><a href="portfolio-3-column-details.html">3 Column Portfolio Details</a></li>
+                        <li><a href="portfolio-4-column.html">4 Column Portfolio</a></li>
+                        <li><a href="portfolio-4-column-details.html">4 Column Portfolio Details</a></li>
+                        <li><a href="portfolio-single-project-split.html">Portfolio Single Project Split</a></li>
+                        <li><a href="portfolio-single-project-wide.html">Portfolio Single Project Wide</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="blog.html">Blog List</a></li>
+                        <li><a href="blog-post.html">Blog Single Post</a></li>
+                    </ul>
+                </li>
+                <li><a href="/Home/Contact">İletİşİm</a></li>
+            </ul>
+        </div>
+    }
+}
+
+@section SonEklenenAraclar{
+<div class="recent-vehicles-wrap margin-top-30 sm-padding-left-none padding-bottom-40">
+    <div class="row">
+        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 recent-vehicles padding-left-none">
+            <h5 class="margin-top-none">Son Eklenen Araçlar</h5>
+            <p>
+                Browse through the vast
+                selection of vehicles that
+                have recently been added
+                to our inventory.
+            </p>
+            <div class="arrow3 clearfix margin-top-15 xs-margin-bottom-25" id="slideControls3"><span class="prev-btn"></span><span class="next-btn"></span></div>
+        </div>
+        <div class="col-md-10 col-sm-8 padding-right-none xs-padding-left-none">
+            <div class="carasouel-slider3">
+                @foreach (Vehicle item in ViewBag.SonEklenenAraclar)
+                {
+                    <div class="slide">
+                        <div class="car-block">
+                            <div class="img-flex"> <a href="/Home/Vehicles/@item.ID"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="@item.MasterPhotoPath" alt="" class="img-responsive"> </div>
+                            <div class="car-block-bottom">
+                                <h6><strong>@item.ProductName</strong></h6>
+                                @if (item.Condition == true)
+                                {
+                                    <h6>İkinci El @item.KM KM</h6>
+                                }
+                                else
+                                {
+                                    <h6>Sıfır @item.KM KM</h6>
+                                }
+                                <h5>@item.SaleInfos.Select(x => x.ListingPrice).FirstOrDefault().ToString("c2")</h5>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+}

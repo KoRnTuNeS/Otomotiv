@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="894733b3a8494c03a66934b6cbb98e6d" Name="Diagram1">
+        <EntityTypeShape EntityType="ONROtomotivModel.Address" Width="1.5" PointX="18" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ONROtomotivModel.Admin" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ONROtomotivModel.BodyType" Width="1.5" PointX="10.5" PointY="24" IsExpanded="true" />
+        <EntityTypeShape EntityType="ONROtomotivModel.Brand" Width="1.5" PointX="3" PointY="28.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ONROtomotivModel.Category" Width="1.5" PointX="0.75" PointY="28.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ONROtomotivModel.Color" Width="1.5" PointX="10.5" PointY="21.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ONROtomotivModel.ComparedVehicle" Width="1.5" PointX="15" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ONROtomotivModel.Customer" Width="1.5" PointX="15.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ONROtomotivModel.Damage" Width="1.5" PointX="15" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ONROtomotivModel.FuelType" Width="1.5" PointX="10.5" PointY="32.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ONROtomotivModel.InnerEquipment" Width="1.5" PointX="15" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ONROtomotivModel.Model" Width="1.5" PointX="5.25" PointY="28.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ONROtomotivModel.Multimedia" Width="1.5" PointX="15" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ONROtomotivModel.OuterEquipment" Width="1.5" PointX="15" PointY="28.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ONROtomotivModel.PaypmentStatu" Width="1.5" PointX="18" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ONROtomotivModel.Photo" Width="1.5" PointX="15" PointY="35.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ONROtomotivModel.RentedPaypment" Width="1.5" PointX="20.25" PointY="28.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ONROtomotivModel.RentInfo" Width="1.5" PointX="15" PointY="37.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ONROtomotivModel.RentOrder" Width="1.5" PointX="18" PointY="28.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ONROtomotivModel.SaleInfo" Width="1.5" PointX="15" PointY="44.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ONROtomotivModel.SecuritySpec" Width="1.5" PointX="15" PointY="46.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ONROtomotivModel.Series" Width="1.5" PointX="8.25" PointY="28.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ONROtomotivModel.SoldOrder" Width="1.5" PointX="18" PointY="24.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ONROtomotivModel.SoldPaypment" Width="1.5" PointX="20.25" PointY="24.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ONROtomotivModel.Sub_Model" Width="1.5" PointX="10.5" PointY="28" IsExpanded="true" />
+        <EntityTypeShape EntityType="ONROtomotivModel.sysdiagram" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ONROtomotivModel.TransmissionType" Width="1.5" PointX="10.5" PointY="35.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ONROtomotivModel.Vehicle" Width="1.5" PointX="12.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ONROtomotivModel.WheelDriveType" Width="1.5" PointX="10.5" PointY="37.375" IsExpanded="true" />
+        <AssociationConnector Association="ONROtomotivModel.FK_Addresses_Customers" ManuallyRouted="false" />
+        <AssociationConnector Association="ONROtomotivModel.FK_Vehicles_BodyTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="ONROtomotivModel.FK_Brands_Categories1" ManuallyRouted="false" />
+        <AssociationConnector Association="ONROtomotivModel.FK_Models_Brands1" ManuallyRouted="false" />
+        <AssociationConnector Association="ONROtomotivModel.FK_Series_Brands" ManuallyRouted="false" />
+        <AssociationConnector Association="ONROtomotivModel.FK_Sub_Model_Brands1" ManuallyRouted="false" />
+        <AssociationConnector Association="ONROtomotivModel.FK_Vehicles_Brands" ManuallyRouted="false" />
+        <AssociationConnector Association="ONROtomotivModel.FK_Models_Categories1" ManuallyRouted="false" />
+        <AssociationConnector Association="ONROtomotivModel.FK_Series_Categories1" ManuallyRouted="false" />
+        <AssociationConnector Association="ONROtomotivModel.FK_Sub_Model_Categories1" ManuallyRouted="false" />
+        <AssociationConnector Association="ONROtomotivModel.FK_Vehicles_Categories" ManuallyRouted="false" />
+        <AssociationConnector Association="ONROtomotivModel.FK_Vehicles_Colors" ManuallyRouted="false" />
+        <AssociationConnector Association="ONROtomotivModel.FK_ComparedVehicles_Vehicles" ManuallyRouted="false" />
+        <AssociationConnector Association="ONROtomotivModel.FK_RentedPaypments_Customers" ManuallyRouted="false" />
+        <AssociationConnector Association="ONROtomotivModel.FK_RentOrders_Customers" ManuallyRouted="false" />
+        <AssociationConnector Association="ONROtomotivModel.FK_SoldOrders_Customers" ManuallyRouted="false" />
+        <AssociationConnector Association="ONROtomotivModel.FK_SoldPaypments_Customers" ManuallyRouted="false" />
+        <AssociationConnector Association="ONROtomotivModel.FK_Damages_Vehicles" ManuallyRouted="false" />
+        <AssociationConnector Association="ONROtomotivModel.FK_Vehicles_FuelTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="ONROtomotivModel.FK_InnerEquipments_Vehicles" ManuallyRouted="false" />
+        <AssociationConnector Association="ONROtomotivModel.FK_Models_Series1" ManuallyRouted="false" />
+        <AssociationConnector Association="ONROtomotivModel.FK_Sub_Model_Models1" ManuallyRouted="false" />
+        <AssociationConnector Association="ONROtomotivModel.FK_Vehicles_Models" ManuallyRouted="false" />
+        <AssociationConnector Association="ONROtomotivModel.FK_Multimedia_Vehicles" ManuallyRouted="false" />
+        <AssociationConnector Association="ONROtomotivModel.FK_OuterEquipments_Vehicles" ManuallyRouted="false" />
+        <AssociationConnector Association="ONROtomotivModel.FK_SoldPaypments_PaypmentStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="ONROtomotivModel.FK_Photos_Vehicles" ManuallyRouted="false" />
+        <AssociationConnector Association="ONROtomotivModel.FK_RentedPaypments_RentOrders" ManuallyRouted="false" />
+        <AssociationConnector Association="ONROtomotivModel.FK_RentInfos_Vehicles" ManuallyRouted="false" />
+        <AssociationConnector Association="ONROtomotivModel.FK_RentInfos_Vehicles1" ManuallyRouted="false" />
+        <AssociationConnector Association="ONROtomotivModel.FK_RentOrders_Vehicles" ManuallyRouted="false" />
+        <AssociationConnector Association="ONROtomotivModel.FK_SaleInfos_Vehicles" ManuallyRouted="false" />
+        <AssociationConnector Association="ONROtomotivModel.FK_SecuritySpecs_Vehicles" ManuallyRouted="false" />
+        <AssociationConnector Association="ONROtomotivModel.FK_Sub_Model_Series1" ManuallyRouted="false" />
+        <AssociationConnector Association="ONROtomotivModel.FK_Vehicles_Series" ManuallyRouted="false" />
+        <AssociationConnector Association="ONROtomotivModel.FK_SoldOrders_Vehicles" ManuallyRouted="false" />
+        <AssociationConnector Association="ONROtomotivModel.FK_SoldPaypments_SoldOrders" ManuallyRouted="false" />
+        <AssociationConnector Association="ONROtomotivModel.FK_Vehicles_Sub_Model" ManuallyRouted="false" />
+        <AssociationConnector Association="ONROtomotivModel.FK_Vehicles_TransmissionType" ManuallyRouted="false" />
+        <AssociationConnector Association="ONROtomotivModel.FK_Vehicles_WheelDriveTypes" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

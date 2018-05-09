@@ -1,0 +1,130 @@
+﻿
+@{
+    ViewBag.Title = "AracListele";
+    Layout = "~/Shared/_LayoutAdminIndex.cshtml";
+}
+@using PagedList
+@using PagedList.Mvc
+@model PagedList<Vehicle>
+@section Head{
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+</style>
+}
+<form action="" method="get">
+    <div id="filtre" style="margin-left:30%;">
+        <span>ID:</span> <input type="text" name="txtID" value="" pattern="^[0-9]*$" title="Araç ID'sini doğru giriniz." /> <span>Başlık:</span> <input type="text" name="txtBaslik" value="" /> <input type="submit" name="name" value="Ara" />
+    </div>
+</form>
+
+<div id="liste">
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Kategori</th>
+            <th>Marka</th>
+            <th>Seri</th>
+            <th>Model</th>
+            <th>Alt Model</th>
+            <th>Başlık</th>
+            <th>Yılı</th>
+            <th>Durum</th>
+            <th>Eklenme Tarihi</th>
+            <th>Sil</th>
+            <th>Düzenle</th>
+            <th>Fiyat Bilgisi</th>
+            <th>Güvenlik</th>
+            <th>İç Donanım</th>
+            <th>Dış Donanım</th>
+            <th>Multimedya</th>
+            <th>Resim Galerisi</th>
+        </tr>
+        @foreach (Vehicle item in Model)
+        {
+            <tr>
+                <td>@item.ID</td>
+                <td>@item.Category.CategoryName</td>
+                <td>@item.Brand.BrandName</td>
+                <td>@item.Series.SerieName</td>
+                <td>@item.Model.ModelName</td>
+                <td>@item.Sub_Model.Sub_ModelName</td>
+                <td>@item.ProductName</td>
+                <td>@item.Year</td>
+                @if (item.Condition == true)
+                {
+                    <td>İkinci El</td>
+                }
+                else
+                {
+                    <td>Sıfır</td>
+                }
+                <td>@item.ListingDate</td>
+                <td><a href="/Admin/AracSil/@item.ID">Sil</a></td>
+                <td><a href="/Admin/AracDuzenle/@item.ID">Düzenle</a></td>
+                <td><a href="/Admin/FiyatBilgisiDuzenle/@item.ID">Düzenle</a></td>
+                <td><a href="/Admin/GuvenlikDuzenle/@item.ID">Düzenle</a></td>
+                <td><a href="/Admin/IcDonanimDuzenle/@item.ID">Düzenle</a></td>
+                <td><a href="/Admin/DisDonanimDuzenle/@item.ID">Düzenle</a></td>
+                <td><a href="/Admin/MultimedyaDuzenle/@item.ID">Düzenle</a></td>
+                <td><a href="/Admin/ResimGalerisi/@item.ID">Düzenle</a></td>
+            </tr>
+        }
+    </table>
+</div>
+
+<div class="sayfalama">
+    @Html.PagedListPager(Model, sayfa => Url.Action("/AracListele", new { sayfa }), PagedListRenderOptions.PageNumbersOnly)
+</div>
+
+@section Login{
+    @if (Session["AdminID"] == null)
+    {
+        <div class="collapse navbar-collapse navbarSec">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="/Admin/Login">Giriş Yap</a></li>
+            </ul>
+        </div>
+    }
+    else
+    {
+        <div class="collapse navbar-collapse navbarSec">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="/Admin/Logout">Çıkış Yap</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Araç Ekle <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/Admin/KategoriEkle">Kategori Ekle</a></li>
+                        <li><a href="/Admin/MarkaEkle">Marka Ekle</a></li>
+                        <li><a href="/Admin/SeriEkle">Seri Ekle</a></li>
+                        <li><a href="/Admin/ModelEkle">Model Ekle</a></li>
+                        <li><a href="/Admin/AltModelEkle">Altmodel Ekle</a></li>
+                        <li><a href="/Admin/AracEkle">Araç Ekle</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Araç Listele <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/Admin/KategoriListele">Kategori Listele</a></li>
+                        <li><a href="/Admin/MarkaListele">Marka Listele</a></li>
+                        <li><a href="/Admin/SeriListele">Seri Listele</a></li>
+                        <li><a href="/Admin/ModelListele">Model Listele</a></li>
+                        <li><a href="/Admin/AltModelListele">Altmodel Listele</a></li>
+                        <li><a href="/Admin/AracListele">Araç Listele</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    }
+}

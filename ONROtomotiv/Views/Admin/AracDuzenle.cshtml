@@ -1,0 +1,206 @@
+﻿
+@{
+    ViewBag.Title = "AracDuzenle";
+    Layout = "~/Shared/_LayoutAdminIndex.cshtml";
+}
+@model Vehicle
+
+<div>
+    @using (Html.BeginForm("AracDuzenle", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div id="sol" style="float:left; margin-left:20%">
+            <span>Kategori</span>
+            @Html.DropDownListFor(x => x.CategoryID, new SelectList(ViewBag.Kategoriler, "id", "CategoryName"))
+            <br />
+            <br />
+            <span>Marka</span>
+            @Html.DropDownListFor(x => x.BrandID, new SelectList(ViewBag.Markalar, "id", "BrandName"))
+            <br />
+            <br />
+            <span>Seri</span>
+            @Html.DropDownListFor(x => x.SerieID, new SelectList(ViewBag.Seriler, "id", "SerieName"))
+            <br />
+            <br />
+            <span>Model</span>
+            @Html.DropDownListFor(x => x.ModelID, new SelectList(ViewBag.Modeller, "id", "ModelName"))
+            <br />
+            <br />
+            <span>Alt Model</span>
+            @Html.DropDownListFor(x => x.Sub_ModelID, new SelectList(ViewBag.AltModeller, "id", "Sub_ModelName"))
+            <br />
+            <br />
+            <span>Yakıt Tipi</span>
+            @Html.DropDownListFor(x => x.FuelTypeID, new SelectList(ViewBag.YakitTipleri, "id", "FuelTypeName"))
+            <br />
+            <br />
+            <span>Vites Tipi</span>
+            @Html.DropDownListFor(x => x.TransmissionTypeID, new SelectList(ViewBag.VitesTipleri, "id", "TransmissionTypeName"))
+            <br />
+            <br />
+            <span>Kasa Tipi</span>
+            @Html.DropDownListFor(x => x.BodyTypeID, new SelectList(ViewBag.KasaTipleri, "id", "BodyTypeName"))
+            <br />
+            <br />
+            <span>Çekiş Tipi</span>
+            @Html.DropDownListFor(x => x.WheelDriveTypeID, new SelectList(ViewBag.CekisTipleri, "id", "WheelDriveTypeName"))
+            <br />
+            <br />
+            <span>Renk</span>
+            @Html.DropDownListFor(x => x.ColorID, new SelectList(ViewBag.Renkler, "id", "ColorName"))
+            <br />
+            <br />
+            <span>Başlık:</span> <input type="text" name="txtUrunAdi" value="@Model.ProductName" required/>
+            @if (ViewBag.Hata1 != null)
+            {
+                string hatalar = ViewBag.Hata1;
+                <span>@hatalar</span>
+            }
+            <br />
+            <br />
+            <span>Araç Yılı:</span> <input type="text" name="txtYil" value="@Model.Year" pattern="[0-9]{4}" title="Araç yılını doğru giriniz." required/>
+            @if (ViewBag.Hata2 != null)
+            {
+                string hatalar = ViewBag.Hata2;
+                <span>@hatalar</span>
+            }
+            <br />
+            <br />
+            <span>Kilometresi:</span> <input type="text" name="txtKM" value="@Model.KM" pattern="^[0-9]*$" title="Kilometreyi doğru giriniz." required/>
+            @if (ViewBag.Hata3 != null)
+	        {
+                string hatalar = ViewBag.Hata3;
+                <span>@hatalar</span>
+	        }
+        </div>
+        <div id="sag" style="margin-left:50%">
+            <span>Motor Kapasitesi:</span> <input type="text" name="txtMotorKapasitesi" value="@Model.EngineCapacity" pattern="^[0-9]*$" title="Motor kapasitesini doğru giriniz." required/>
+            @if (ViewBag.Hata4 != null)
+            {
+                string hatalar = ViewBag.Hata4;
+                <span>@hatalar</span>
+            }
+            <br />
+            <br />
+            <span>Motor Gücü:</span> <input type="text" name="txtMotorGucu" value="@Model.EngineHP" pattern="^[0-9]*$" title="Motor gücünü doğru giriniz." required/>
+            @if (ViewBag.Hata5 != null)
+            {
+                string hatalar = ViewBag.Hata5;
+                <span>@hatalar</span>
+            }
+            <br />
+            <br />
+            <span>Garanti:</span>
+            @if (Model.Warranty == true)
+            {
+                <select name="ddlGaranti">
+                    <option selected="selected">Var</option>
+                    <option>Yok</option>
+                </select>
+            }
+            else
+            {
+                <select name="ddlGaranti">
+                    <option>Var</option>
+                    <option selected="selected">Yok</option>
+                </select>
+            }
+            <br />
+            <br />
+            <span>Aracın Bölgesi:</span> <input type="text" name="txtBolge" value="@Model.Region" pattern="^[A-Za-zığüşöçİĞÜŞÖÇ]+\s?\s?[A-Za-zığüşöçİĞÜŞÖÇ]+$" title="Araç bölgesini doğru giriniz." required/>
+            @if (ViewBag.Hata6 != null)
+            {
+                string hatalar = ViewBag.Hata6;
+                <span>@hatalar</span>
+            }
+            <br />
+            <br />
+            <span>Takas Var Mı?</span>
+            @if (Model.Trade == true)
+            {
+                <select name="ddlTakas">
+                    <option selected="selected">Var</option>
+                    <option>Yok</option>
+                </select>
+            }
+            else
+            {
+                <select name="ddlTakas">
+                    <option>Var</option>
+                    <option selected="selected">Yok</option>
+                </select>
+            }
+            <br />
+            <br />
+            <span>Durumu:</span>
+            @if (Model.Condition == true)
+            {
+                <select name="ddlDurum">
+                    <option>Sıfır</option>
+                    <option selected="selected">İkinci El</option>
+                </select>
+            }
+            else
+            {
+                <select name="ddlDurum">
+                    <option selected="selected">Sıfır</option>
+                    <option>İkinci El</option>
+                </select>
+            }
+            <br />
+            <br />
+            <span>Açıklama:</span> <textarea name="txtAciklama" required>@Model.Description</textarea>
+            @if (ViewBag.Hata7 != null)
+            {
+                string hatalar = ViewBag.Hata7;
+                <span>@hatalar</span>
+            }
+            <br />
+            <br />
+            <span>Ana Resim:</span> <input type="file" name="fuPhotoPath" value="@Model.MasterPhotoPath">
+            <br />
+            <input type="submit" name="name" value="Ekle" />
+        </div>
+    }        
+</div>
+
+@section Login{
+    @if (Session["AdminID"] == null)
+    {
+        <div class="collapse navbar-collapse navbarSec">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="/Admin/Login">Giriş Yap</a></li>
+            </ul>
+        </div>
+    }
+    else
+    {
+        <div class="collapse navbar-collapse navbarSec">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="/Admin/Logout">Çıkış Yap</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Araç Ekle <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/Admin/KategoriEkle">Kategori Ekle</a></li>
+                        <li><a href="/Admin/MarkaEkle">Marka Ekle</a></li>
+                        <li><a href="/Admin/SeriEkle">Seri Ekle</a></li>
+                        <li><a href="/Admin/ModelEkle">Model Ekle</a></li>
+                        <li><a href="/Admin/AltModelEkle">Altmodel Ekle</a></li>
+                        <li><a href="/Admin/AracEkle">Araç Ekle</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Araç Listele <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/Admin/KategoriListele">Kategori Listele</a></li>
+                        <li><a href="/Admin/MarkaListele">Marka Listele</a></li>
+                        <li><a href="/Admin/SeriListele">Seri Listele</a></li>
+                        <li><a href="/Admin/ModelListele">Model Listele</a></li>
+                        <li><a href="/Admin/AltModelListele">Altmodel Listele</a></li>
+                        <li><a href="/Admin/AracListele">Araç Listele</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    }
+}
+

@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewBag.Title = "MultimedyaDuzenle";
+    Layout = "~/Shared/_LayoutAdminIndex.cshtml";
+}
+@model Multimedia
+
+<div>
+    <form action="" method="post">
+        <div id="sol" style="float:left; margin-left:20%;">
+            @Html.CheckBoxFor(x => x.AltiArtiHoparlor) <span>6+ Hoparlör</span>
+            <br />
+            @Html.CheckBoxFor(x => x.ArkaEglencePaketi) <span>Arka Eğlence Paketi</span>
+            <br />
+            @Html.CheckBoxFor(x => x.AUX) <span>AUX</span>
+            <br />
+            @Html.CheckBoxFor(x => x.Bluetooth_Telefon) <span>Bluetooth (Telefon)</span>
+            <br />
+            @Html.CheckBoxFor(x => x.CDDegistirici) <span>CD Değiştirici</span>
+            <br />
+            @Html.CheckBoxFor(x => x.DVDDegistirici) <span>DVD Değiştirici</span>
+            <br />
+            @Html.CheckBoxFor(x => x.iPodBaglantisi) <span>iPod Bağlantısı</span>
+        </div>
+        <div id="sag" style="margin-left:50%;">
+            @Html.CheckBoxFor(x => x.Radyo_CDCalar) <span>Radyo (CD Çalar)</span>
+            <br />
+            @Html.CheckBoxFor(x => x.Radyo_Kasetçalar) <span>Radyo (Kaset Çalar)</span>
+            <br />
+            @Html.CheckBoxFor(x => x.Radyo_MP3Calar) <span>Radyo (MP3 Çalar)</span>
+            <br />
+            @Html.CheckBoxFor(x => x.TV_Navigasyon) <span>TV-Navigasyon</span>
+            <br />
+            @Html.CheckBoxFor(x => x.USB_AUX) <span>USB-AUX</span>
+            <br />
+            <br />
+            <input type="submit" name="name" style="margin-left:6%; margin-top:-1%;" value="Kaydet" />
+        </div>
+    </form>
+</div>
+
+@section Login{
+    @if (Session["AdminID"] == null)
+    {
+        <div class="collapse navbar-collapse navbarSec">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="/Admin/Login">Giriş Yap</a></li>
+            </ul>
+        </div>
+    }
+    else
+    {
+        <div class="collapse navbar-collapse navbarSec">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="/Admin/Logout">Çıkış Yap</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Araç Ekle <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/Admin/KategoriEkle">Kategori Ekle</a></li>
+                        <li><a href="/Admin/MarkaEkle">Marka Ekle</a></li>
+                        <li><a href="/Admin/SeriEkle">Seri Ekle</a></li>
+                        <li><a href="/Admin/ModelEkle">Model Ekle</a></li>
+                        <li><a href="/Admin/AltModelEkle">Altmodel Ekle</a></li>
+                        <li><a href="/Admin/AracEkle">Araç Ekle</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Araç Listele <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/Admin/KategoriListele">Kategori Listele</a></li>
+                        <li><a href="/Admin/MarkaListele">Marka Listele</a></li>
+                        <li><a href="/Admin/SeriListele">Seri Listele</a></li>
+                        <li><a href="/Admin/ModelListele">Model Listele</a></li>
+                        <li><a href="/Admin/AltModelListele">Altmodel Listele</a></li>
+                        <li><a href="/Admin/AracListele">Araç Listele</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    }
+}

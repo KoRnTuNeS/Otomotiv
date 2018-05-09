@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "FiyatBilgisiDuzenle";
+    Layout = "~/Shared/_LayoutAdminIndex.cshtml";
+}
+@model SaleInfo
+
+<div>
+    <form action="" method="post">
+        <span>Liste Fiyatı:</span> <input type="text" name="txtListeFiyati" value="@Model.ListingPrice" pattern="\d+\,?\d*" title="Liste fiyatını düzgün giriniz" required />
+        @if (ViewBag.Hata1 != null)
+        {
+            string hatalar = ViewBag.Hata1;
+            <span>@hatalar</span>
+        }
+        <br />
+        <span>İndirimli Fiyat</span> <input type="text" name="txtIndirimliFiyat" value="@Model.DiscountPrice" pattern="\d+\,?\d*" title="İndirimli fiyatı düzgün giriniz." />
+        <br />
+        <input type="submit" name="name" value="Ekle" />
+    </form>
+</div>
+
+@section Login{
+    @if (Session["AdminID"] == null)
+    {
+        <div class="collapse navbar-collapse navbarSec">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="/Admin/Login">Giriş Yap</a></li>
+            </ul>
+        </div>
+    }
+    else
+    {
+        <div class="collapse navbar-collapse navbarSec">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="/Admin/Logout">Çıkış Yap</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Araç Ekle <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/Admin/KategoriEkle">Kategori Ekle</a></li>
+                        <li><a href="/Admin/MarkaEkle">Marka Ekle</a></li>
+                        <li><a href="/Admin/SeriEkle">Seri Ekle</a></li>
+                        <li><a href="/Admin/ModelEkle">Model Ekle</a></li>
+                        <li><a href="/Admin/AltModelEkle">Altmodel Ekle</a></li>
+                        <li><a href="/Admin/AracEkle">Araç Ekle</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Araç Listele <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/Admin/KategoriListele">Kategori Listele</a></li>
+                        <li><a href="/Admin/MarkaListele">Marka Listele</a></li>
+                        <li><a href="/Admin/SeriListele">Seri Listele</a></li>
+                        <li><a href="/Admin/ModelListele">Model Listele</a></li>
+                        <li><a href="/Admin/AltModelListele">Altmodel Listele</a></li>
+                        <li><a href="/Admin/AracListele">Araç Listele</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    }
+}

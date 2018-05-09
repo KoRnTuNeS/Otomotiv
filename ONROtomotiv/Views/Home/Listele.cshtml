@@ -1,0 +1,367 @@
+﻿
+@{
+    ViewBag.Title = "Listele";
+    Layout = "~/Shared/_LayoutListe.cshtml";
+}
+@using PagedList
+@using PagedList.Mvc
+@model IPagedList<Vehicle>
+
+@foreach (Vehicle item in Model)
+{
+    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+        <div class="inventory margin-bottom-20 clearfix scroll_effect fadeIn">
+            <a class="inventory" href="/Home/Vehicles/@item.ID">
+                <div class="title">@item.ProductName</div>
+                <img src="@item.MasterPhotoPath" class="preview" alt="preview">
+                <table class="options-primary">
+                    <tr>
+                        <td class="option primary">Kasa:</td>
+                        <td class="spec">@item.BodyType.BodyTypeName</td>
+                    </tr>
+                    <tr>
+                        <td class="option primary">Çekiş:</td>
+                        <td class="spec">@item.WheelDriveType.WheelDriveTypeName</td>
+                    </tr>
+                    <tr>
+                        <td class="option primary">Yıl:</td>
+                        <td class="spec">@item.Year</td>
+                    </tr>
+                    <tr>
+                        <td class="option primary">Vites:</td>
+                        <td class="spec">@item.TransmissionType.TransmissionTypeName</td>
+                    </tr>
+                    <tr>
+                        <td class="option primary">KM:</td>
+                        <td class="spec">@item.KM</td>
+                    </tr>
+                </table>
+                <table class="options-secondary">
+                    <tr>
+                        <td class="option secondary">Yakıt:</td>
+                        <td class="spec">@item.FuelType.FuelTypeName</td>
+                    </tr>
+                    <tr>
+                        <td class="option secondary">Renk:</td>
+                        <td class="spec">@item.Color.ColorName</td>
+                    </tr>
+                    <tr>
+                        <td class="option secondary">Motor Hacmi:</td>
+                        <td class="spec">@item.EngineCapacity</td>
+                    </tr>
+                    <tr>
+                        <td class="option secondary">Motor Gücü:</td>
+                        <td class="spec">@item.EngineHP HP</td>
+                    </tr>
+                    <tr>
+                        <td class="option secondary">Durum:</td>
+                        
+                            @if (@item.Condition == false)
+                            {
+                                <td class="spec"> Sıfır</td>
+                            }
+                            else
+                            {
+                                <td class="spec"> İkinci El</td>
+                            }                                
+                    </tr>
+                </table>
+                <img src="http://demo.themesuite.com/automotive/images/carfax.png" alt="carfax" class="carfax" />
+                <div class="price">
+                    <b>Fiyat:</b><br>
+                    <div style="font-size: 22px;" class="figure">
+                        @item.SaleInfos.Select(x=> x.ListingPrice).FirstOrDefault().ToString("c2")<br>
+                    </div>
+                    <div class="tax">KDV dahil</div>
+                </div>
+                <div class="clearfix"></div>
+            </a>
+            <a class="w3-button w3-white w3-border w3-round-large w3-small w3-display-bottomright" href="/Home/KarsilastirmaEkle/@item.ID">Karşılaştırma</a>
+        </div>
+    </div>
+}
+
+@section Login{
+    @if (Session["KullaniciID"] == null)
+    {
+        <li><a href="/Home/Register"><i class="fa fa-user-plus"></i> Kayıt Ol</a></li>
+        <li><a href="/Home/Login"><i class="fa fa-sign-in"></i> Giriş Yap</a></li>
+    }
+    else
+    {
+        int userID = (int)Session["KullaniciID"];
+        <li><a href="/Home/UserDetails/"><i class="fa fa-user"></i> Kullanıcı Detayı</a></li>
+        <li><a href="/Home/Logout"><i class="fa fa-power-off"></i> Çıkış Yap</a></li>
+    }
+}
+
+@section Navbar{
+    @if (Session["KullaniciID"] == null)
+    {
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav pull-right">
+                <li><a href="/Home/Index">Ana Sayfa</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Araçlar <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/Home/Listele">Araç Listele</a></li>
+                        <li><a href="/Home/Karsilastirma">Araç Karşılaştır</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Inventory <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="demo.html">Select View Demo</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Boxed Layout <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="inventory-boxed-fullwidth.html">Boxed Fullwidth</a></li>
+                                <li><a href="inventory-boxed-sidebar-left.html">Boxed Sidebar Left</a></li>
+                                <li><a href="inventory-boxed-sidebar-right.html">Boxed Sidebar Right</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Wide Layout <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="inventory-wide-fullwidth.html">Wide Fullwidth</a></li>
+                                <li><a href="inventory-wide-sidebar-left.html">Wide Sidebar Left</a></li>
+                                <li><a href="inventory-wide-sidebar-right.html">Wide Sidebar Right</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="inventory-listing.html">Individual Listing</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Vehicle Comparison <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="inventory-2-listing-comparison.html">2 Listing Comparison</a></li>
+                                <li><a href="inventory-3-listing-comparison.html">3 Listing Comparison</a></li>
+                                <li><a href="inventory-4-listing-comparison.html">4 Listing Comparison</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="service.html">Services</a></li>
+                <li><a href="our-team.html">Our Team</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="portfolio-2-column.html">2 Column Portfolio</a></li>
+                        <li><a href="portfolio-2-column-details.html">2 Column Portfolio Details</a></li>
+                        <li><a href="portfolio-3-column.html">3 Column Portfolio</a></li>
+                        <li><a href="portfolio-3-column-details.html">3 Column Portfolio Details</a></li>
+                        <li><a href="portfolio-4-column.html">4 Column Portfolio</a></li>
+                        <li><a href="portfolio-4-column-details.html">4 Column Portfolio Details</a></li>
+                        <li><a href="portfolio-single-project-split.html">Portfolio Single Project Split</a></li>
+                        <li><a href="portfolio-single-project-wide.html">Portfolio Single Project Wide</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="blog.html">Blog List</a></li>
+                        <li><a href="blog-post.html">Blog Single Post</a></li>
+                    </ul>
+                </li>
+                <li><a href="/Home/Contact">İletİşİm</a></li>
+            </ul>
+        </div>
+    }
+    else
+    {
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav pull-right">
+                <li class="dropdown active"><a href="/Home/Index">Anasayfa</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">İşlemlerİm <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/Home/Tekliflerim">Tekliflerim</a></li>
+                        <li><a href="/Home/UserDetails">Kayıt Bilgilerim</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Araçlar <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/Home/Listele">Araç Listele</a></li>
+                        <li><a href="/Home/Karsilastirma">Araç Karşılaştır</a></li>
+                    </ul>
+                </li>
+                <li><a href="our-team.html">Our Team</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="portfolio-2-column.html">2 Column Portfolio</a></li>
+                        <li><a href="portfolio-2-column-details.html">2 Column Portfolio Details</a></li>
+                        <li><a href="portfolio-3-column.html">3 Column Portfolio</a></li>
+                        <li><a href="portfolio-3-column-details.html">3 Column Portfolio Details</a></li>
+                        <li><a href="portfolio-4-column.html">4 Column Portfolio</a></li>
+                        <li><a href="portfolio-4-column-details.html">4 Column Portfolio Details</a></li>
+                        <li><a href="portfolio-single-project-split.html">Portfolio Single Project Split</a></li>
+                        <li><a href="portfolio-single-project-wide.html">Portfolio Single Project Wide</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="blog.html">Blog List</a></li>
+                        <li><a href="blog-post.html">Blog Single Post</a></li>
+                    </ul>
+                </li>
+                <li><a href="/Home/Contact">İletİşİm</a></li>
+            </ul>
+        </div>
+    }
+}
+
+@section SolFiltre{
+<div class=" col-md-3 col-sm-12 col-lg-pull-9 col-md-pull-9 left-sidebar">
+    <div class="left_inventory">
+        <h3 class="margin-bottom-25">ARAÇ FİLTRELEME</h3>
+        <form action="/Home/Listele" method="get">
+            <div class="my-dropdown min-years-dropdown max-dropdown">
+                <select name="yil" class="css-dropdowns" tabindex="1">
+                    <option value="">Yıla göre ara</option>
+                    @foreach (int item in ViewBag.Yillar)
+                    {
+                        <option value="@item.ToString()">@item.ToString()</option>
+                    }
+                </select>
+            </div>
+            <div class="my-dropdown min-years-dropdown max-dropdown">
+                <select name="kategori" class="css-dropdowns" tabindex="1">
+                    <option value="">Kategoriye göre ara</option>
+                    @foreach (Category item in ViewBag.Kategoriler)
+                    {
+                        <option value="@item.CategoryName">@item.CategoryName</option>
+                    }
+                </select>
+            </div>
+            <div class="my-dropdown min-years-dropdown max-dropdown">
+                <select name="marka" class="css-dropdowns" tabindex="1">
+                    <option value="">Markaya göre ara</option>
+                    @foreach (Brand item in ViewBag.Markalar)
+                    {
+                        <option value="@item.BrandName">@item.BrandName</option>
+                    }
+                </select>
+            </div>
+            <div class="my-dropdown min-years-dropdown max-dropdown">
+                <select name="yakit" class="css-dropdowns" tabindex="1">
+                    <option value="">Yakıt tipine göre ara</option>
+                    @foreach (string item in ViewBag.YakitTipleri)
+                    {
+                        <option value="@item">@item</option>
+                    }
+                </select>
+            </div>
+            <div class="my-dropdown min-years-dropdown max-dropdown">
+                <select name="vites" class="css-dropdowns" tabindex="1">
+                    <option value="">Vites tipine göre ara</option>
+                    @foreach (string item in ViewBag.VitesTipleri)
+                    {
+                        <option value="@item">@item</option>
+                    }
+                </select>
+            </div>
+            <div class="my-dropdown min-years-dropdown max-dropdown">
+                <select name="kasa" class="css-dropdowns" tabindex="1">
+                    <option value="">Kasa tipine göre ara</option>
+                    @foreach (string item in ViewBag.KasaTipleri)
+                    {
+                        <option value="@item">@item</option>
+                    }
+                </select>
+            </div>
+            <div class="my-dropdown min-years-dropdown max-dropdown">
+                <select name="cekis" class="css-dropdowns" tabindex="1">
+                    <option value="">Çekiş tipine göre ara</option>
+                    @foreach (string item in ViewBag.CekisTipleri)
+                    {
+                        <option value="@item">@item</option>
+                    }
+                </select>
+            </div>            
+            <input type="submit" value="Filtrele" class="pull-left btn-inventory margin-bottom-none md-button" />
+        </form>
+    </div>
+</div>
+}
+
+@section UstFiltre{
+<div class="select-wrapper listing_select clearfix margin-top-none margin-bottom-15">
+    <div class="my-dropdown years-dropdown">
+        <select name="year" class="css-dropdowns" tabindex="1">
+            <option value="">Yıllar</option>
+            @foreach (int item in ViewBag.Yillar)
+            {
+                <option>@item.ToString()</option>
+            }
+        </select>
+    </div>
+    <div class="my-dropdown makers-dropdown">
+        <select name="make" class="css-dropdowns" tabindex="1">
+            <option value="">Kategoriler</option>
+            @foreach (Category item in ViewBag.Kategoriler)
+            {
+                <option>@item.CategoryName</option>
+            }
+        </select>
+    </div>
+    <div class="my-dropdown models-dropdown">
+        <select name="model" class="css-dropdowns" tabindex="1">
+            <option value="">Markalar</option>
+            @foreach (Brand item in ViewBag.Markalar)
+            {
+                <option>@item.BrandName</option>
+            }
+        </select>
+    </div>
+    <div class="my-dropdown body-styles-dropdown">
+        <select name="body_style" class="css-dropdowns" tabindex="1">
+            <option value="">Yakıt tipleri</option>
+            @foreach (string item in ViewBag.YakitTipleri)
+            {
+                <option>@item</option>
+            }
+        </select>
+    </div>
+    <div class="my-dropdown mileage-dropdown">
+        <select name="mileage" class="css-dropdowns" tabindex="1">
+            <option value="">Vites tipleri</option>
+            @foreach (string item in ViewBag.VitesTipleri)
+            {
+                <option>@item</option>
+            }
+        </select>
+    </div>
+    <div class="my-dropdown transmissions-dropdown">
+        <select name="transmission" class="css-dropdowns" tabindex="1">
+            <option value="">Kasa tipleri</option>
+            @foreach (string item in ViewBag.VitesTipleri)
+            {
+                <option>@item</option>
+            }
+        </select>
+    </div>
+    <div class="my-dropdown fuel-economies-dropdown">
+        <select name="fuel_economies" class="css-dropdowns" tabindex="1">
+            <option value="">Çekiş tipleri</option>
+            @foreach (string item in ViewBag.CekisTipleri)
+            {
+                <option>@item</option>
+            }
+        </select>
+    </div>    
+</div>
+}
+
+@section Sayfalama{
+<div class="inventory_pagination md-margin-bottom-none xs-margin-bottom-60 sm-margin-bottom-60">
+     @Html.PagedListPager(Model, sayfa => Url.Action("/Listele", new { sayfa, yil = ViewBag.Yil, kategori = ViewBag.Kategori, marka = ViewBag.Marka, yakit = ViewBag.Yakit, vites = ViewBag.Vites, kasa = ViewBag.Kasa, cekis = ViewBag.Cekis  }), PagedListRenderOptions.PageNumbersOnly)
+</div>
+}
+
+@section UstKisim{
+<div class="row">
+    <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 padding-none"> <span class="ribbon"><strong>@Model.TotalItemCount Araç Bulundu:</strong></span> @*<span class="ribbon-item">Liste</span>*@ 
+    </div>
+</div>
+}

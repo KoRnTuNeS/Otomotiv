@@ -1,0 +1,1216 @@
+﻿
+@{
+    ViewBag.Title = "Vehicles";
+    Layout = "~/Shared/_LayoutVehicle.cshtml";
+}
+@model Vehicle
+
+<div class="inner-page inventory-listing">
+    <div class="inventory-heading margin-bottom-10 clearfix">
+        <div class="row">
+            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                <h2>@Model.ProductName</h2>
+                <span class="margin-top-10">Our template platform will maximize the exposure of your inventory online</span>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 text-right">
+                <h2>@Model.SaleInfos.Select(x => x.ListingPrice).FirstOrDefault().ToString("c2")</h2>
+                <em>KDV dahil</em>
+            </div>
+        </div>
+    </div>
+    @*<div class="content-nav margin-bottom-30">
+        <div class="row">
+            <ul>
+                <li class="prev1 gradient_button"><a href="#">Prev Vehicle</a></li>
+                <li class="offer gradient_button"><a href="forms/request.php?recaptcha" class="fancybox_div">Request More Info</a></li>
+                <li class="schedule gradient_button"><a href="forms/schedule.php?recaptcha" class="fancybox_div">Schedule Test Drive</a></li>
+                <li class="request gradient_button"><a href="forms/offer.php?recaptcha" class="fancybox_div">Make an Offer</a></li>
+                <li class="trade gradient_button"><a href="forms/trade.php?recaptcha" class="fancybox_div">Trade-In Appraisal</a></li>
+                <li class="pdf gradient_button"><a href="#" class="">PDF Brochure</a></li>
+                <li class="print gradient_button"><a class="print_page">Print This Vehicle</a></li>
+                <li class="email gradient_button"><a href="forms/friend.php?recaptcha" class="fancybox_div">Email to a Friend</a></li>
+                <li class="next1 gradient_button"><a href="#">Next Vehicle</a></li>
+            </ul>
+        </div>
+    </div>*@
+    <div class="row">
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 left-content padding-left-none">
+            <!--OPEN OF SLIDER-->
+            <div class="listing-slider">
+                <section class="slider home-banner">
+                    <div class="flexslider" id="home-slider-canvas">
+                        <ul class="slides">
+                            @foreach (string item in ViewBag.Resimler)
+                            {
+                                <li data-thumb="@item"> <img src="@item" alt="" data-full-image="@item" /> </li>
+                            }   
+                        </ul>
+                    </div>
+                </section>
+                <section class="home-slider-thumbs">
+                    <div class="flexslider" id="home-slider-thumbs">
+                        <ul class="slides">
+                            @foreach (string item in ViewBag.Resimler)
+                            {
+                                <li data-thumb="@item"> <a href="#"><img src="@item" alt="" /></a> </li>
+                            }
+                        </ul>
+                    </div>
+                </section>
+            </div>
+            <!--CLOSE OF SLIDER-->
+            <!--Slider End-->
+            <div class="clearfix"></div>
+            <div class="bs-example bs-example-tabs example-tabs margin-top-50">
+                <ul id="myTab" class="nav nav-tabs">
+                    <li class="active"><a href="#vehicle" data-toggle="tab">Açıklama</a></li>
+                    <li><a href="#features" data-toggle="tab">Güvenlik</a></li>
+                    <li><a href="#features2" data-toggle="tab">İç Donanım</a></li>
+                    <li><a href="#features3" data-toggle="tab">Dış Donanım</a></li>
+                    <li><a href="#features4" data-toggle="tab">Multimedya</a></li>
+                </ul>
+                <div id="myTabContent" class="tab-content margin-top-15 margin-bottom-20">
+                    <div class="tab-pane fade in active" id="vehicle">
+                        @Model.Description
+                    </div>
+                    <div class="tab-pane fade" id="features">
+                        <ul class="fa-ul">
+                            @if (Model.SecuritySpecs.Select(x => x.ABC).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> ABC</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> ABC</li>
+                            }
+                            @if (Model.SecuritySpecs.Select(x => x.ABS).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> ABS</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> ABS</li>
+                            }
+                            @if (Model.SecuritySpecs.Select(x => x.ASR).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> ASR</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> ASR</li>
+                            }
+                            @if (Model.SecuritySpecs.Select(x => x.ESP).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> ESP</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> ESP</li>
+                            }
+                            @if (Model.SecuritySpecs.Select(x => x.Airmatic).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Airmatic</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Airmatic</li>
+                            }
+                            @if (Model.SecuritySpecs.Select(x => x.EDL).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> EDL</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> EDL</li>
+                            }
+                            @if (Model.SecuritySpecs.Select(x => x.EBA).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> EBA</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> EBA</li>
+                            }
+                            @if (Model.SecuritySpecs.Select(x => x.EBD).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> EBD</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> EBD</li>
+                            }
+                            @if (Model.SecuritySpecs.Select(x => x.TSC).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> TSC</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> TSC</li>
+                            }
+                            @if (Model.SecuritySpecs.Select(x => x.BAS).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> BAS</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> BAS</li>
+                            }
+                            @if (Model.SecuritySpecs.Select(x => x.Distronic).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Distronic</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Distronic</li>
+                            }
+                            @if (Model.SecuritySpecs.Select(x => x.YokusKalkisDestegi).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Yokuş Kalkış Destegi</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Yokuş Kalkış Destegi</li>
+                            }
+                            @if (Model.SecuritySpecs.Select(x => x.GeceGorus).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Gece Görüş</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Gece Görüş</li>
+                            }
+                            @if (Model.SecuritySpecs.Select(x => x.SerittenAyrilmaIkazi).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Şeritten Ayrılma İkazı</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Şeritten Ayrılma İkazı</li>
+                            }
+                            @if (Model.SecuritySpecs.Select(x => x.SeritDegistirmeYardimcisi).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Şerit Değiştirme Yardımcısı</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Şerit Değiştirme Yardımcısı</li>
+                            }
+                            @if (Model.SecuritySpecs.Select(x => x.Airbag_Surucu).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Airbag (Sürücü)</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Airbag (Sürücü)</li>
+                            }
+                            @if (Model.SecuritySpecs.Select(x => x.Airbag_Yolcu).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Airbag (Yolcu)</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Airbag (Yolcu)</li>
+                            }
+                            @if (Model.SecuritySpecs.Select(x => x.Airbag_Yan).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Airbag (Yan)</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Airbag (Yan)</li>
+                            }
+                            @if (Model.SecuritySpecs.Select(x => x.Airbag_Diz).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Airbag (Diz)</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Airbag (Diz)</li>
+                            }
+                            @if (Model.SecuritySpecs.Select(x => x.Airbag_Perde).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Airbag (Perde)</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Airbag (Perde)</li>
+                            }
+                            @if (Model.SecuritySpecs.Select(x => x.Airbag_Tavan).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Airbag (Tavan)</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Airbag (Tavan)</li>
+                            }
+                            @if (Model.SecuritySpecs.Select(x => x.KorNoktaUyariSistemi).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Kör Nokta Uyarı Sistemi</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Kör Nokta Uyarı Sistemi</li>
+                            }
+                            @if (Model.SecuritySpecs.Select(x => x.LastikArizaGostergesi).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Lastik Arıza Göstergesi</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Lastik Arıza Göstergesi</li>
+                            }
+                            @if (Model.SecuritySpecs.Select(x => x.YorgunlukTespitSistemi).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Yorgunluk Tespit Sistemi</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Yorgunluk Tespit Sistemi</li>
+                            }
+                            @if (Model.SecuritySpecs.Select(x => x.Isofix).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Isofix</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Isofix</li>
+                            }
+                            @if (Model.SecuritySpecs.Select(x => x.Alarm).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Alarm</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Alarm</li>
+                            }
+                            @if (Model.SecuritySpecs.Select(x => x.MerkeziKilit).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Merkezi Kilit</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Merkezi Kilit</li>
+                            }
+                            @if (Model.SecuritySpecs.Select(x => x.Immobilizer).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Immobilizer</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Immobilizer</li>
+                            }                          
+                        </ul>
+                    </div>
+                    <div class="tab-pane fade" id="features2">
+                        <ul class="fa-ul">
+                            @if (Model.InnerEquipments.Select(x => x.DeriKoltuk).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Deri Koltuk</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Deri Koltuk</li>
+                            }
+                            @if (Model.InnerEquipments.Select(x => x.KumasKoltuk).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Kumaş Koltuk</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Kumaş Koltuk</li>
+                            }
+                            @if (Model.InnerEquipments.Select(x => x.ElektrikliOnCamlar).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Elektrikli Ön Camlar</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Elektrikli Ön Camlar</li>
+                            }
+                            @if (Model.InnerEquipments.Select(x => x.ElektrikliArkaCamlar).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Elektrikli Arka Camlar</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Elektrikli Arka Camlar</li>
+                            }
+                            @if (Model.InnerEquipments.Select(x => x.Klima_Analog).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Klima (Analog)</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Klima (Analog)</li>
+                            }
+                            @if (Model.InnerEquipments.Select(x => x.Klima_Digital).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Klima (Digital)</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Klima (Digital)</li>
+                            }
+                            @if (Model.InnerEquipments.Select(x => x.OtmKararanDikizAynasi).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Otomatik Kararan Dikiz Aynası</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Otomatik Kararan Dikiz Aynası</li>
+                            }
+                            @if (Model.InnerEquipments.Select(x => x.OnKolDayama).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Ön Kol Dayama</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Ön Kol Dayama</li>
+                            }
+                            @if (Model.InnerEquipments.Select(x => x.ArkaKolDayama).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Arka Kol Dayama</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Arka Kol Dayama</li>
+                            }
+                            @if (Model.InnerEquipments.Select(x => x.AnahtarsizCalistirma).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Anahtarsız Çalıştırma</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Anahtarsız Çalıştırma</li>
+                            }
+                            @if (Model.InnerEquipments.Select(x => x.AltiIleriVites).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> 6 İleri Vites</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> 6 İleri Vites</li>
+                            }
+                            @if (Model.InnerEquipments.Select(x => x.YediIleriVites).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> 7 İleri Vites</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> 7 İleri Vites</li>
+                            }
+                            @if (Model.InnerEquipments.Select(x => x.HidrolikDireksiyon).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Hidrolik Direksiyon</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Hidrolik Direksiyon</li>
+                            }
+                            @if (Model.InnerEquipments.Select(x => x.FonksiyonelDireksiyon).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Fonksiyonel Direksiyon</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Fonksiyonel Direksiyon</li>
+                            }
+                            @if (Model.InnerEquipments.Select(x => x.AyarlanabilirDireksiyon).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Ayarlanabilir Direksiyon</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Ayarlanabilir Direksiyon</li>
+                            }
+                            @if (Model.InnerEquipments.Select(x => x.DeriDireksiyon).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Deri Direksiyon</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Deri Direksiyon</li>
+                            }
+                            @if (Model.InnerEquipments.Select(x => x.AhsapDireksiyon).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Ahşap Direksiyon</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Ahşap Direksiyon</li>
+                            }
+                            @if (Model.InnerEquipments.Select(x => x.IsitmaliDireksiyon).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Isıtmalı Direksiyon</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Isıtmalı Direksiyon</li>
+                            }
+                            @if (Model.InnerEquipments.Select(x => x.Koltuklar_Elektirkli).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Koltuklar (Elektirkli)</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Koltuklar (Elektirkli)</li>
+                            }
+                            @if (Model.InnerEquipments.Select(x => x.Koltuklar_Hafizali).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Koltuklar (Hafızalı)</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Koltuklar (Hafızalı)</li>
+                            }
+                            @if (Model.InnerEquipments.Select(x => x.Koltuklar_Katlanır).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Koltuklar (Katlanır)</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Koltuklar (Katlanır)</li>
+                            }
+                            @if (Model.InnerEquipments.Select(x => x.Koltuklar_OnIsitmali).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Koltuklar (Ön Isıtmalı)</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Koltuklar (Ön Isıtmalı)</li>
+                            }
+                            @if (Model.InnerEquipments.Select(x => x.Koltuklar_ArkaIsitmali).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Koltuklar (Arka Isıtmalı)</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Koltuklar (Arka Isıtmalı)</li>
+                            }
+                            @if (Model.InnerEquipments.Select(x => x.Koltuklar_ArkaIsitmali).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Koltuklar (Soğutmalı)</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Koltuklar (Soğutmalı)</li>
+                            }
+                            @if (Model.InnerEquipments.Select(x => x.HizSabitleyici).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Hız Sabitleyici</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Hız Sabitleyici</li>
+                            }
+                            @if (Model.InnerEquipments.Select(x => x.AdaptiveCruiseControl).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Adaptive Cruise Control</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Adaptive Cruise Control</li>
+                            }
+                            @if (Model.InnerEquipments.Select(x => x.SogutmaliTorpido).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Soğutmalı Torpido</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Soğutmalı Torpido</li>
+                            }
+                            @if (Model.InnerEquipments.Select(x => x.YolBilgisayari).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Yol Bilgisayarı</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Yol Bilgisayariı</li>
+                            }
+                            @if (Model.InnerEquipments.Select(x => x.KromKaplama).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Krom Kaplama</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Krom Kaplama</li>
+                            }
+                            @if (Model.InnerEquipments.Select(x => x.AhsapKapama).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Ahşap Kapama</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Ahşap Kapama</li>
+                            }
+                            @if (Model.InnerEquipments.Select(x => x.HeadUpDisplay).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Head Up Display</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Head Up Display</li>
+                            }
+                            @if (Model.InnerEquipments.Select(x => x.Start_Stop).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Start-Stop</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Start-Stop</li>
+                            }
+                            @if (Model.InnerEquipments.Select(x => x.GeceGorusKamerasi).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Gece Görüş Kamerası</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Gece Görüş Kamerası</li>
+                            }
+                            @if (Model.InnerEquipments.Select(x => x.OnGorusKamerasi).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Ön Görüş Kamerası</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Ön Görüş Kamerası</li>
+                            }
+                            @if (Model.InnerEquipments.Select(x => x.UcuncuSiraKoltuk).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> 3. Sıra Koltuk</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> 3. Sıra Koltuk</li>
+                            }
+                        </ul>
+                    </div>
+                    <div class="tab-pane fade" id="features3">
+                        <ul class="fa-ul">
+                            @if (Model.OuterEquipments.Select(x => x.Hardtop).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Hardtop</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Hardtop</li>
+                            }
+                            @if (Model.OuterEquipments.Select(x => x.Far_LED).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Far (LED)</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Far (LED)</li>
+                            }
+                            @if (Model.OuterEquipments.Select(x => x.Far_Halojen).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Far (Halojen)</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Far (Halojen)</li>
+                            }
+                            @if (Model.OuterEquipments.Select(x => x.Far_Xenon).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Far (Xenon)</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Far (Xenon)</li>
+                            }
+                            @if (Model.OuterEquipments.Select(x => x.Far_BiXenon).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Far (BiXenon)</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Far (BiXenon)</li>
+                            }
+                            @if (Model.OuterEquipments.Select(x => x.Hardtop).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Far (Sis)</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Far (Sis)</li>
+                            }
+                            @if (Model.OuterEquipments.Select(x => x.Far_Adaptif).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Far (Adaptif)</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Far (Adaptif)</li>
+                            }
+                            @if (Model.OuterEquipments.Select(x => x.FarGeceSensoru).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Far (Gece Sensorü)</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Far (Gece Sensorü)</li>
+                            }
+                            @if (Model.OuterEquipments.Select(x => x.Far_Yikama).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Far (Yıkama)</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Far (Yıkama)</li>
+                            }
+                            @if (Model.OuterEquipments.Select(x => x.Aynalar_Elektrikli).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Aynalar (Elektrikli)</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Aynalar (Elektrikli)</li>
+                            }
+                            @if (Model.OuterEquipments.Select(x => x.Aynalar_Katlanir).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Aynalar (Katlanır)</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Aynalar (Katlanır)</li>
+                            }
+                            @if (Model.OuterEquipments.Select(x => x.Aynalar_Isitmali).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Aynalar (Isıtmalı)</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Aynalar (Isıtmalı)</li>
+                            }
+                            @if (Model.OuterEquipments.Select(x => x.Aynalar_Hafizali).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Aynalar (Hafızalı)</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Aynalar (Hafızalı)</li>
+                            }
+                            @if (Model.OuterEquipments.Select(x => x.ParkSensoru_Arka).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Park Sensorü (Arka)</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Park Sensorü (Arka)</li>
+                            }
+                            @if (Model.OuterEquipments.Select(x => x.ParkSensoru_On).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Park Sensorü (Ön)</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Park Sensorü (Ön)</li>
+                            }
+                            @if (Model.OuterEquipments.Select(x => x.AlasimliJant).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Alaşımlı Jant</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Alaşımlı Jant</li>
+                            }
+                            @if (Model.OuterEquipments.Select(x => x.Sunroof).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Sunroof</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Sunroof</li>
+                            }
+                            @if (Model.OuterEquipments.Select(x => x.PanoramikCamTavan).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Panoramik Cam Tavan</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Panoramik Cam Tavan</li>
+                            }
+                            @if (Model.OuterEquipments.Select(x => x.YagmurSensoru).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Yagmur Sensörü</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Yagmur Sensörü</li>
+                            }
+                            @if (Model.OuterEquipments.Select(x => x.ArkaCamBuzCozucu).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Arka Cam Buz Çözücü</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Arka Cam Buz Çözücü</li>
+                            }
+                            @if (Model.OuterEquipments.Select(x => x.PanoramikOnCam).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Panoramik Ön Cam</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Panoramik Ön Cam</li>
+                            }
+                            @if (Model.OuterEquipments.Select(x => x.RomorkCekiDemiri).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Römork Çeki Demiri</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Römork Çeki Demiri</li>
+                            }
+                            @if (Model.OuterEquipments.Select(x => x.AkilliBagajKapagi).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Akıllı Bagaj Kapağı</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Akıllı Bagaj Kapağı</li>
+                            }
+                        </ul>
+                    </div>
+                    <div class="tab-pane fade" id="features4">
+                        <ul class="fa-ul">
+                            @if (Model.Multimedias.Select(x => x.Radyo_Kasetçalar).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Radyo (Kasetçalar)</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Radyo (Kasetçalar)</li>
+                            }
+                            @if (Model.Multimedias.Select(x => x.Radyo_CDCalar).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Radyo (CD Çalar)</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Radyo (CD Çalar)</li>
+                            }
+                            @if (Model.Multimedias.Select(x => x.Radyo_MP3Calar).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Radyo (MP3 Çalar)</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Radyo (MP3 Çalar)</li>
+                            }
+                            @if (Model.Multimedias.Select(x => x.TV_Navigasyon).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> TV-Navigasyon</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> TV-Navigasyon</li>
+                            }
+                            @if (Model.Multimedias.Select(x => x.Bluetooth_Telefon).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Bluetooth-Telefon</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Bluetooth-Telefon</li>
+                            }
+                            @if (Model.Multimedias.Select(x => x.USB_AUX).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> USB-AUX</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> USB-AUX</li>
+                            }
+                            @if (Model.Multimedias.Select(x => x.AUX).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> AUX</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> AUX</li>
+                            }
+                            @if (Model.Multimedias.Select(x => x.iPodBaglantisi).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> iPod Baglantısı</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> iPod Baglantısı</li>
+                            }
+                            @if (Model.Multimedias.Select(x => x.AltiArtiHoparlor).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> 6+ Hoparlör</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> 6+ Hoparlör</li>
+                            }
+                            @if (Model.Multimedias.Select(x => x.CDDegistirici).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> CD Değiştirici</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> CD Değiştirici</li>
+                            }
+                            @if (Model.Multimedias.Select(x => x.ArkaEglencePaketi).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> Arka Eğlence Paketi</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> Arka Eğlence Paketi</li>
+                            }
+                            @if (Model.Multimedias.Select(x => x.DVDDegistirici).FirstOrDefault() == true)
+                            {
+                                <li><i class="fa-li fa fa-check"></i> DVD Değiştirici</li>
+                            }
+                            else
+                            {
+                                <li><i class="fa-li fa fa-remove"></i> DVD Değiştirici</li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 right-content padding-right-none">
+            <div class="side-content">
+                <div class="car-info margin-bottom-50">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td>MARKA:</td>
+                                    <td>@Model.Brand.BrandName</td>
+                                </tr>
+                                <tr>
+                                    <td>MODEL:</td>
+                                    <td>@Model.Model.ModelName @Model.Sub_Model.Sub_ModelName</td>
+                                </tr>
+                                <tr>
+                                    <td>KASA:</td>
+                                    <td>@Model.BodyType.BodyTypeName</td>
+                                </tr>
+                                <tr>
+                                    <td>YIL:</td>
+                                    <td>@Model.Year</td>
+                                </tr>
+                                <tr>
+                                    <td>VİTES:</td>
+                                    <td>@Model.TransmissionType.TransmissionTypeName</td>
+                                </tr>
+                                <tr>
+                                    <td>ÇEKİŞ:</td>
+                                    <td>@Model.WheelDriveType.WheelDriveTypeName</td>
+                                </tr>
+                                <tr>
+                                    <td>RENK:</td>
+                                    <td>@Model.Color.ColorName</td>
+                                </tr>
+                                <tr>
+                                    <td>MOTOR HACMİ:</td>
+                                    <td>@Model.EngineCapacity CC</td>
+                                </tr>
+                                <tr>
+                                    <td>MOTOR GÜCÜ:</td>
+                                    <td>@Model.EngineHP HP</td>
+                                </tr>
+                                <tr>
+                                    <td>KM:</td>
+                                    <td>@Model.KM</td>
+                                </tr>
+                                <tr>
+                                    <td>YAKIT:</td>
+                                    <td>@Model.FuelType.FuelTypeName</td>
+                                </tr>
+                                <tr>
+                                    <td>DURUMU:</td>
+                                    @if (Model.Condition == true)
+                                    {
+                                        <td>İkinci El</td>
+                                    }
+                                    else
+                                    {
+                                        <td>Sıfır</td>
+                                    }
+                                </tr>
+                                <tr>
+                                    <td>TAKAS:</td>
+                                    @if (Model.Trade == true)
+                                    {
+                                        <td>Var</td>
+                                    }
+                                    else
+                                    {
+                                        <td>Yok</td>
+                                    }
+                                </tr>
+                                <tr>
+                                    <td>GARANTİ:</td>
+                                    @if (Model.Warranty == true)
+                                    {
+                                        <td>Var</td>
+                                    }
+                                    else
+                                    {
+                                        <td>Yok</td>
+                                    }
+                                </tr>
+                                <tr>
+                                    <td>PLAKA/UYRUK:</td>
+                                    <td>@Model.Region</td>
+                                </tr>
+                                <tr>
+                                    <td>İLAN TARİHİ:</td>
+                                    <td>@Model.ListingDate</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <a href="/Home/TeklifVer/@Model.ID">
+                    <div class="efficiency-rating text-center padding-vertical-15 margin-bottom-40">
+                        <h3 style="color:#c7081b;">Teklif Ver</h3>
+                    </div>
+                </a>
+                <a href="/Home/KarsilastirmaEkle/@Model.ID">
+                    <div class="efficiency-rating text-center padding-vertical-15 margin-bottom-40">
+                        <h3 style="color:#c7081b;">Karşılaştırma Yap</h3>
+                    </div>
+                </a>
+                <ul class="social-likes pull-right" data-url="http://themesuite.com" data-title="Blog Post">
+                    <li class="facebook" title="Share link on Facebook"></li>
+                    <li class="plusone" title="Share link on Google+" data-counter="includes/googleplusonecount.php?url=http://google.com&amp;callback=?"></li>
+                    <li class="pinterest" title="Share image on Pinterest" data-media=""></li>
+                    <li class="twitter" title="Share link on Twitter"></li>
+                </ul>
+                <div class="clearfix"></div>
+                <div class="financing_calculator margin-top-40">
+                    @*<h3>FINANCING CALCULATOR</h3>
+                    <div class="table-responsive">
+                        <table class="table no-border no-margin">
+                            <tbody>
+                                <tr>
+                                    <td>Cost of Vehicle ($):</td>
+                                    <td><input type="text" class="number cost" placeholder="10000" /></td>
+                                </tr>
+                                <tr>
+                                    <td>Down Payment ($):</td>
+                                    <td><input type="text" class="number down_payment" placeholder="1000" /></td>
+                                </tr>
+                                <tr>
+                                    <td>Annual Interest Rate (%):</td>
+                                    <td><input type="text" class="number interest" placeholder="7" /></td>
+                                </tr>
+                                <tr>
+                                    <td>Term of Loan in Years:</td>
+                                    <td><input type="text" class="number loan_years" placeholder="5" /></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>*@
+                    @*<div class="bi_weekly clearfix">
+                        <div class="pull-left">Frequency of Payments:</div>
+                        <div class="dropdown_container ">
+                            <select class="frequency css-dropdowns">
+                                <option value='0'>Bi-Weekly</option>
+                                <option value='1'>Weekly</option>
+                                <option value='2'>Monthly</option>
+                            </select>
+                        </div>
+                    </div>
+                    <a class="btn-inventory pull-right calculate">Calculate My Payment</a>
+                    <div class="clear"></div>
+                    <div class="calculation">
+                        <div class="table-responsive">
+                            <table>
+                                <tr>
+                                    <td><strong>NUMBER OF PAYMENTS:</strong></td>
+                                    <td><strong class="payments">60</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>PAYMENT AMOUNT:</strong></td>
+                                    <td><strong class="payment_amount">$ 89.11</strong></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>*@
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="recent-vehicles-wrap">
+        <div class="row">
+            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 recent-vehicles padding-left-none xs-padding-bottom-20">
+                <h5 class="margin-top-none">Benzer Araçlar</h5>
+                <p>
+                    Browse through the vast
+                    selection of vehicles that
+                    have recently been added
+                    to our inventory.
+                </p>
+                <div class="arrow3 clearfix" id="slideControls3"><span class="prev-btn"></span><span class="next-btn"></span></div>
+            </div>
+            <div class="col-md-10 col-sm-8 padding-right-none sm-padding-left-none xs-padding-left-none">
+                <div class="carasouel-slider3">
+                    @foreach (Vehicle item in ViewBag.BenzerAraclar)
+                    {
+                        <div class="slide">
+                            <div class="car-block">
+                                <div class="img-flex"> <a href="/Home/Vehicles/@item.ID"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="@item.MasterPhotoPath" alt="" class="img-responsive"> </div>
+                                <div class="car-block-bottom">
+                                    <h6><strong>@item.ProductName</strong></h6>
+                                    @if (item.Condition == true)
+                                    {
+                                        <h6>İkinci El @item.KM KM</h6>
+                                    }
+                                    else
+                                    {
+                                        <h6>Sıfır @item.KM KM</h6>
+                                    }
+                                    <h5>@item.SaleInfos.Select(x => x.ListingPrice).FirstOrDefault().ToString("c2")</h5>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+
+@section Login{
+    @if (Session["KullaniciID"] == null)
+    {
+        <li><a href="/Home/Register"><i class="fa fa-user-plus"></i> Kayıt Ol</a></li>
+        <li><a href="/Home/Login"><i class="fa fa-sign-in"></i> Giriş Yap</a></li>
+    }
+    else
+    {
+        int userID = (int)Session["KullaniciID"];
+        <li><a href="/Home/UserDetails/"><i class="fa fa-user"></i> Kullanıcı Detayı</a></li>
+        <li><a href="/Home/Logout"><i class="fa fa-power-off"></i> Çıkış Yap</a></li>
+    }
+}
+
+@section Navbar{
+    @if (Session["KullaniciID"] == null)
+    {
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav pull-right">
+                <li><a href="/Home/Index">Ana Sayfa</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Araçlar <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/Home/Listele">Araç Listele</a></li>
+                        <li><a href="/Home/Karsilastirma">Araç Karşılaştır</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Inventory <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="demo.html">Select View Demo</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Boxed Layout <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="inventory-boxed-fullwidth.html">Boxed Fullwidth</a></li>
+                                <li><a href="inventory-boxed-sidebar-left.html">Boxed Sidebar Left</a></li>
+                                <li><a href="inventory-boxed-sidebar-right.html">Boxed Sidebar Right</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Wide Layout <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="inventory-wide-fullwidth.html">Wide Fullwidth</a></li>
+                                <li><a href="inventory-wide-sidebar-left.html">Wide Sidebar Left</a></li>
+                                <li><a href="inventory-wide-sidebar-right.html">Wide Sidebar Right</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="inventory-listing.html">Individual Listing</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Vehicle Comparison <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="inventory-2-listing-comparison.html">2 Listing Comparison</a></li>
+                                <li><a href="inventory-3-listing-comparison.html">3 Listing Comparison</a></li>
+                                <li><a href="inventory-4-listing-comparison.html">4 Listing Comparison</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="service.html">Services</a></li>
+                <li><a href="our-team.html">Our Team</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="portfolio-2-column.html">2 Column Portfolio</a></li>
+                        <li><a href="portfolio-2-column-details.html">2 Column Portfolio Details</a></li>
+                        <li><a href="portfolio-3-column.html">3 Column Portfolio</a></li>
+                        <li><a href="portfolio-3-column-details.html">3 Column Portfolio Details</a></li>
+                        <li><a href="portfolio-4-column.html">4 Column Portfolio</a></li>
+                        <li><a href="portfolio-4-column-details.html">4 Column Portfolio Details</a></li>
+                        <li><a href="portfolio-single-project-split.html">Portfolio Single Project Split</a></li>
+                        <li><a href="portfolio-single-project-wide.html">Portfolio Single Project Wide</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="blog.html">Blog List</a></li>
+                        <li><a href="blog-post.html">Blog Single Post</a></li>
+                    </ul>
+                </li>
+                <li><a href="/Home/Contact">İletİşİm</a></li>
+            </ul>
+        </div>
+    }
+    else
+    {
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav pull-right">
+                <li class="dropdown active"><a href="/Home/Index">Anasayfa</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">İşlemlerİm <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/Home/Tekliflerim">Tekliflerim</a></li>
+                        <li><a href="/Home/UserDetails">Kayıt Bilgilerim</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Araçlar <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/Home/Listele">Araç Listele</a></li>
+                        <li><a href="/Home/Karsilastirma">Araç Karşılaştır</a></li>
+                    </ul>
+                </li>
+                <li><a href="our-team.html">Our Team</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="portfolio-2-column.html">2 Column Portfolio</a></li>
+                        <li><a href="portfolio-2-column-details.html">2 Column Portfolio Details</a></li>
+                        <li><a href="portfolio-3-column.html">3 Column Portfolio</a></li>
+                        <li><a href="portfolio-3-column-details.html">3 Column Portfolio Details</a></li>
+                        <li><a href="portfolio-4-column.html">4 Column Portfolio</a></li>
+                        <li><a href="portfolio-4-column-details.html">4 Column Portfolio Details</a></li>
+                        <li><a href="portfolio-single-project-split.html">Portfolio Single Project Split</a></li>
+                        <li><a href="portfolio-single-project-wide.html">Portfolio Single Project Wide</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="blog.html">Blog List</a></li>
+                        <li><a href="blog-post.html">Blog Single Post</a></li>
+                    </ul>
+                </li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    }
+}

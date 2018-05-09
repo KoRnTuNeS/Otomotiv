@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewBag.Title = "Teklifler";
+    Layout = "~/Shared/_LayoutAdminIndex.cshtml";
+}
+@model List<SoldOrder>
+@section Head{
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+</style>
+}
+<div>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Kategori</th>
+            <th>Marka</th>
+            <th>Seri</th>
+            <th>Model</th>
+            <th>Alt Model</th>
+            <th>Başlık</th>
+            <th>Yılı</th>
+            <th>Fiyat</th>
+            <th>Müşteri</th>
+            <th>Mail</th>
+            <th>Telefon</th>
+            <th>Satış Tarihi</th>
+            <th>Taksit Sayısı</th>
+            <th>Aylık Taksit Fiyatı</th>
+            <th>Taksit Bitiş Tarihi</th>
+            <th>Sil</th>
+            <th>Düzenle</th>
+        </tr>
+        @foreach (SoldOrder item in Model)
+        {
+            <tr>
+                <td>@item.ID</td>
+                <td>@item.Vehicle.Category.CategoryName</td>
+                <td>@item.Vehicle.Brand.BrandName</td>
+                <td>@item.Vehicle.Series.SerieName</td>
+                <td>@item.Vehicle.Model.ModelName</td>
+                <td>@item.Vehicle.Sub_Model.Sub_ModelName</td>
+                <td>@item.Vehicle.ProductName</td>
+                <td>@item.Vehicle.Year</td>
+                <td>@item.Vehicle.SaleInfos.Select(x => x.ListingPrice).FirstOrDefault().ToString("c2")</td>
+                <td>@item.Customer.Firstname @item.Customer.Lastname</td>
+                <td>@item.Customer.Mail</td>
+                <td>@item.Customer.Phone</td>
+                <td>@item.SoldDate</td>
+                <td>@Math.Floor(item.SoldPrice / item.MonthlyPaypments)</td>
+                <td>@item.MonthlyPaypments.ToString("c2")</td>
+                <td>@item.MonthlyPaypmentDate</td>
+                <td><a href="/Admin/TeklifSil/@item.ID">Sil</a></td>
+                <td><a href="/Admin/TeklifDuzenle/@item.ID">Düzenle</a></td>
+            </tr>
+        }
+    </table>
+</div>
+

@@ -1,0 +1,2624 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ONROtomotivModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Addresses">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerID" Type="int" Nullable="false" />
+          <Property Name="AddressName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Firstname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Lastname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Town" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PostalCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Admins">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BodyTypes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BodyTypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Brands">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryID" Type="int" Nullable="false" />
+          <Property Name="BrandName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Colors">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ColorName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ComparedVehicles">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VehicleID" Type="int" Nullable="false" />
+          <Property Name="CustomerID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Firstname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Lastname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Mail" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RegisteredDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Damages">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VehicleID" Type="int" Nullable="false" />
+          <Property Name="IsPainted" Type="bit" Nullable="false" />
+          <Property Name="PaintedAreaDescription" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsDamaged" Type="bit" Nullable="false" />
+          <Property Name="DamagedAreaDescription" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="FuelTypes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FuelTypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="InnerEquipments">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VehicleID" Type="int" Nullable="false" />
+          <Property Name="DeriKoltuk" Type="bit" Nullable="false" />
+          <Property Name="KumasKoltuk" Type="bit" Nullable="false" />
+          <Property Name="Deri_KumasKoltuk" Type="bit" Nullable="false" />
+          <Property Name="ElektrikliOnCamlar" Type="bit" Nullable="false" />
+          <Property Name="ElektrikliArkaCamlar" Type="bit" Nullable="false" />
+          <Property Name="Klima_Analog" Type="bit" Nullable="false" />
+          <Property Name="Klima_Digital" Type="bit" Nullable="false" />
+          <Property Name="OtmKararanDikizAynasi" Type="bit" Nullable="false" />
+          <Property Name="OnKolDayama" Type="bit" Nullable="false" />
+          <Property Name="ArkaKolDayama" Type="bit" Nullable="false" />
+          <Property Name="AnahtarsizCalistirma" Type="bit" Nullable="false" />
+          <Property Name="AltiIleriVites" Type="bit" Nullable="false" />
+          <Property Name="YediIleriVites" Type="bit" Nullable="false" />
+          <Property Name="HidrolikDireksiyon" Type="bit" Nullable="false" />
+          <Property Name="FonksiyonelDireksiyon" Type="bit" Nullable="false" />
+          <Property Name="AyarlanabilirDireksiyon" Type="bit" Nullable="false" />
+          <Property Name="DeriDireksiyon" Type="bit" Nullable="false" />
+          <Property Name="AhsapDireksiyon" Type="bit" Nullable="false" />
+          <Property Name="IsitmaliDireksiyon" Type="bit" Nullable="false" />
+          <Property Name="Koltuklar_Elektirkli" Type="bit" Nullable="false" />
+          <Property Name="Koltuklar_Hafizali" Type="bit" Nullable="false" />
+          <Property Name="Koltuklar_Katlanır" Type="bit" Nullable="false" />
+          <Property Name="Koltuklar_OnIsitmali" Type="bit" Nullable="false" />
+          <Property Name="Koltuklar_ArkaIsitmali" Type="bit" Nullable="false" />
+          <Property Name="Koltuklar_Sogutmali" Type="bit" Nullable="false" />
+          <Property Name="HizSabitleyici" Type="bit" Nullable="false" />
+          <Property Name="AdaptiveCruiseControl" Type="bit" Nullable="false" />
+          <Property Name="SogutmaliTorpido" Type="bit" Nullable="false" />
+          <Property Name="YolBilgisayari" Type="bit" Nullable="false" />
+          <Property Name="KromKaplama" Type="bit" Nullable="false" />
+          <Property Name="AhsapKapama" Type="bit" Nullable="false" />
+          <Property Name="HeadUpDisplay" Type="bit" Nullable="false" />
+          <Property Name="Start_Stop" Type="bit" Nullable="false" />
+          <Property Name="GeceGorusKamerasi" Type="bit" Nullable="false" />
+          <Property Name="OnGorusKamerasi" Type="bit" Nullable="false" />
+          <Property Name="UcuncuSiraKoltuk" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Models">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryID" Type="int" Nullable="false" />
+          <Property Name="BrandID" Type="int" Nullable="false" />
+          <Property Name="SerieID" Type="int" Nullable="false" />
+          <Property Name="ModelName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Multimedia">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VehicleID" Type="int" Nullable="false" />
+          <Property Name="Radyo_Kasetçalar" Type="bit" Nullable="false" />
+          <Property Name="Radyo_CDCalar" Type="bit" Nullable="false" />
+          <Property Name="Radyo_MP3Calar" Type="bit" Nullable="false" />
+          <Property Name="TV_Navigasyon" Type="bit" Nullable="false" />
+          <Property Name="Bluetooth_Telefon" Type="bit" Nullable="false" />
+          <Property Name="USB_AUX" Type="bit" Nullable="false" />
+          <Property Name="AUX" Type="bit" Nullable="false" />
+          <Property Name="iPodBaglantisi" Type="bit" Nullable="false" />
+          <Property Name="AltiArtiHoparlor" Type="bit" Nullable="false" />
+          <Property Name="CDDegistirici" Type="bit" Nullable="false" />
+          <Property Name="ArkaEglencePaketi" Type="bit" Nullable="false" />
+          <Property Name="DVDDegistirici" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OuterEquipments">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VehicleID" Type="int" Nullable="false" />
+          <Property Name="Hardtop" Type="bit" Nullable="false" />
+          <Property Name="Far_LED" Type="bit" Nullable="false" />
+          <Property Name="Far_Halojen" Type="bit" Nullable="false" />
+          <Property Name="Far_Xenon" Type="bit" Nullable="false" />
+          <Property Name="Far_BiXenon" Type="bit" Nullable="false" />
+          <Property Name="Far_Sis" Type="bit" Nullable="false" />
+          <Property Name="Far_Adaptif" Type="bit" Nullable="false" />
+          <Property Name="FarGeceSensoru" Type="bit" Nullable="false" />
+          <Property Name="Far_Yikama" Type="bit" Nullable="false" />
+          <Property Name="Aynalar_Elektrikli" Type="bit" Nullable="false" />
+          <Property Name="Aynalar_Katlanir" Type="bit" Nullable="false" />
+          <Property Name="Aynalar_Isitmali" Type="bit" Nullable="false" />
+          <Property Name="Aynalar_Hafizali" Type="bit" Nullable="false" />
+          <Property Name="ParkSensoru_Arka" Type="bit" Nullable="false" />
+          <Property Name="ParkSensoru_On" Type="bit" Nullable="false" />
+          <Property Name="AlasimliJant" Type="bit" Nullable="false" />
+          <Property Name="Sunroof" Type="bit" Nullable="false" />
+          <Property Name="PanoramikCamTavan" Type="bit" Nullable="false" />
+          <Property Name="YagmurSensoru" Type="bit" Nullable="false" />
+          <Property Name="ArkaCamBuzCozucu" Type="bit" Nullable="false" />
+          <Property Name="PanoramikOnCam" Type="bit" Nullable="false" />
+          <Property Name="RomorkCekiDemiri" Type="bit" Nullable="false" />
+          <Property Name="AkilliBagajKapagi" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PaypmentStatus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DidItPay" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Photos">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VehicleID" Type="int" Nullable="false" />
+          <Property Name="PhotoPath" Type="nvarchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RentedPaypments">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="CustomerID" Type="int" Nullable="false" />
+          <Property Name="RentedOrdersID" Type="int" Nullable="false" />
+          <Property Name="CustomerPaypmentMade" Type="money" Nullable="false" />
+          <Property Name="CustomerPaypmentMadeDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RentInfos">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VehicleID" Type="int" Nullable="false" />
+          <Property Name="ListingPrice" Type="money" Nullable="false" />
+          <Property Name="DiscountPrice" Type="money" />
+        </EntityType>
+        <EntityType Name="RentOrders">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VehicleID" Type="int" Nullable="false" />
+          <Property Name="CustomerID" Type="int" Nullable="false" />
+          <Property Name="RentedPrice" Type="money" Nullable="false" />
+          <Property Name="RentalStartDate" Type="datetime" Nullable="false" />
+          <Property Name="RentalEndDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SaleInfos">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VehicleID" Type="int" Nullable="false" />
+          <Property Name="ListingPrice" Type="money" Nullable="false" />
+          <Property Name="DiscountPrice" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SecuritySpecs">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VehicleID" Type="int" Nullable="false" />
+          <Property Name="ABC" Type="bit" Nullable="false" />
+          <Property Name="ABS" Type="bit" Nullable="false" />
+          <Property Name="ASR" Type="bit" Nullable="false" />
+          <Property Name="ESP" Type="bit" Nullable="false" />
+          <Property Name="Airmatic" Type="bit" Nullable="false" />
+          <Property Name="EDL" Type="bit" Nullable="false" />
+          <Property Name="EBA" Type="bit" Nullable="false" />
+          <Property Name="EBD" Type="bit" Nullable="false" />
+          <Property Name="TSC" Type="bit" Nullable="false" />
+          <Property Name="BAS" Type="bit" Nullable="false" />
+          <Property Name="Distronic" Type="bit" Nullable="false" />
+          <Property Name="YokusKalkisDestegi" Type="bit" Nullable="false" />
+          <Property Name="GeceGorus" Type="bit" Nullable="false" />
+          <Property Name="SerittenAyrilmaIkazi" Type="bit" Nullable="false" />
+          <Property Name="SeritDegistirmeYardimcisi" Type="bit" Nullable="false" />
+          <Property Name="Airbag_Surucu" Type="bit" Nullable="false" />
+          <Property Name="Airbag_Yolcu" Type="bit" Nullable="false" />
+          <Property Name="Airbag_Yan" Type="bit" Nullable="false" />
+          <Property Name="Airbag_Diz" Type="bit" Nullable="false" />
+          <Property Name="Airbag_Perde" Type="bit" Nullable="false" />
+          <Property Name="Airbag_Tavan" Type="bit" Nullable="false" />
+          <Property Name="KorNoktaUyariSistemi" Type="bit" Nullable="false" />
+          <Property Name="LastikArizaGostergesi" Type="bit" Nullable="false" />
+          <Property Name="YorgunlukTespitSistemi" Type="bit" Nullable="false" />
+          <Property Name="Isofix" Type="bit" Nullable="false" />
+          <Property Name="Alarm" Type="bit" Nullable="false" />
+          <Property Name="MerkeziKilit" Type="bit" Nullable="false" />
+          <Property Name="Immobilizer" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Series">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryID" Type="int" Nullable="false" />
+          <Property Name="BrandID" Type="int" Nullable="false" />
+          <Property Name="SerieName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SoldOrders">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VehicleID" Type="int" Nullable="false" />
+          <Property Name="CustomerID" Type="int" Nullable="false" />
+          <Property Name="SoldPrice" Type="money" Nullable="false" />
+          <Property Name="SoldDate" Type="datetime" Nullable="false" />
+          <Property Name="MonthlyPaypments" Type="money" Nullable="false" />
+          <Property Name="MonthlyPaypmentDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SoldPaypments">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerID" Type="int" Nullable="false" />
+          <Property Name="SoldOrdersID" Type="int" Nullable="false" />
+          <Property Name="PaypmentStatusID" Type="int" Nullable="false" />
+          <Property Name="CustomersPaypmentMade" Type="money" Nullable="false" />
+          <Property Name="CustomerPaypmentDue" Type="money" Nullable="false" />
+          <Property Name="CustomersPaypmentMadeDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sub_Model">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryID" Type="int" Nullable="false" />
+          <Property Name="BrandID" Type="int" Nullable="false" />
+          <Property Name="SerieID" Type="int" Nullable="false" />
+          <Property Name="ModelID" Type="int" Nullable="false" />
+          <Property Name="Sub_ModelName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TransmissionType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TransmissionTypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Vehicles">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryID" Type="int" Nullable="false" />
+          <Property Name="BrandID" Type="int" Nullable="false" />
+          <Property Name="SerieID" Type="int" Nullable="false" />
+          <Property Name="ModelID" Type="int" Nullable="false" />
+          <Property Name="Sub_ModelID" Type="int" Nullable="false" />
+          <Property Name="FuelTypeID" Type="int" Nullable="false" />
+          <Property Name="TransmissionTypeID" Type="int" Nullable="false" />
+          <Property Name="BodyTypeID" Type="int" Nullable="false" />
+          <Property Name="WheelDriveTypeID" Type="int" Nullable="false" />
+          <Property Name="ColorID" Type="int" Nullable="false" />
+          <Property Name="ProductName" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Year" Type="int" Nullable="false" />
+          <Property Name="ListingDate" Type="datetime" Nullable="false" />
+          <Property Name="KM" Type="int" Nullable="false" />
+          <Property Name="EngineCapacity" Type="int" Nullable="false" />
+          <Property Name="EngineHP" Type="int" Nullable="false" />
+          <Property Name="Warranty" Type="bit" Nullable="false" />
+          <Property Name="Region" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Trade" Type="bit" Nullable="false" />
+          <Property Name="Condition" Type="bit" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="1000" />
+          <Property Name="MasterPhotoPath" Type="nvarchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WheelDriveTypes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WheelDriveTypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Addresses_Customers">
+          <End Role="Customers" Type="Self.Customers" Multiplicity="1" />
+          <End Role="Addresses" Type="Self.Addresses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Addresses">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Brands_Categories1">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
+          <End Role="Brands" Type="Self.Brands" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Brands">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ComparedVehicles_Vehicles">
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="1" />
+          <End Role="ComparedVehicles" Type="Self.ComparedVehicles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ComparedVehicles">
+              <PropertyRef Name="VehicleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Damages_Vehicles">
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="1" />
+          <End Role="Damages" Type="Self.Damages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Damages">
+              <PropertyRef Name="VehicleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InnerEquipments_Vehicles">
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="1" />
+          <End Role="InnerEquipments" Type="Self.InnerEquipments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="InnerEquipments">
+              <PropertyRef Name="VehicleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Models_Brands1">
+          <End Role="Brands" Type="Self.Brands" Multiplicity="1" />
+          <End Role="Models" Type="Self.Models" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brands">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Models">
+              <PropertyRef Name="BrandID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Models_Categories1">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
+          <End Role="Models" Type="Self.Models" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Models">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Models_Series1">
+          <End Role="Series" Type="Self.Series" Multiplicity="1" />
+          <End Role="Models" Type="Self.Models" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Series">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Models">
+              <PropertyRef Name="SerieID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Multimedia_Vehicles">
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="1" />
+          <End Role="Multimedia" Type="Self.Multimedia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Multimedia">
+              <PropertyRef Name="VehicleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OuterEquipments_Vehicles">
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="1" />
+          <End Role="OuterEquipments" Type="Self.OuterEquipments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OuterEquipments">
+              <PropertyRef Name="VehicleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Photos_Vehicles">
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="1" />
+          <End Role="Photos" Type="Self.Photos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Photos">
+              <PropertyRef Name="VehicleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RentedPaypments_Customers">
+          <End Role="Customers" Type="Self.Customers" Multiplicity="1" />
+          <End Role="RentedPaypments" Type="Self.RentedPaypments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RentedPaypments">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RentedPaypments_RentOrders">
+          <End Role="RentOrders" Type="Self.RentOrders" Multiplicity="1" />
+          <End Role="RentedPaypments" Type="Self.RentedPaypments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RentOrders">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RentedPaypments">
+              <PropertyRef Name="RentedOrdersID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RentInfos_Vehicles">
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="1" />
+          <End Role="RentInfos" Type="Self.RentInfos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RentInfos">
+              <PropertyRef Name="VehicleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RentInfos_Vehicles1">
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="1" />
+          <End Role="RentInfos" Type="Self.RentInfos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RentInfos">
+              <PropertyRef Name="VehicleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RentOrders_Customers">
+          <End Role="Customers" Type="Self.Customers" Multiplicity="1" />
+          <End Role="RentOrders" Type="Self.RentOrders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RentOrders">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RentOrders_Vehicles">
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="1" />
+          <End Role="RentOrders" Type="Self.RentOrders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RentOrders">
+              <PropertyRef Name="VehicleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SaleInfos_Vehicles">
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="1" />
+          <End Role="SaleInfos" Type="Self.SaleInfos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SaleInfos">
+              <PropertyRef Name="VehicleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SecuritySpecs_Vehicles">
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="1" />
+          <End Role="SecuritySpecs" Type="Self.SecuritySpecs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SecuritySpecs">
+              <PropertyRef Name="VehicleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Series_Brands">
+          <End Role="Brands" Type="Self.Brands" Multiplicity="1" />
+          <End Role="Series" Type="Self.Series" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brands">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Series">
+              <PropertyRef Name="BrandID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Series_Categories1">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
+          <End Role="Series" Type="Self.Series" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Series">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SoldOrders_Customers">
+          <End Role="Customers" Type="Self.Customers" Multiplicity="1" />
+          <End Role="SoldOrders" Type="Self.SoldOrders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SoldOrders">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SoldOrders_Vehicles">
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="1" />
+          <End Role="SoldOrders" Type="Self.SoldOrders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SoldOrders">
+              <PropertyRef Name="VehicleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SoldPaypments_Customers">
+          <End Role="Customers" Type="Self.Customers" Multiplicity="1" />
+          <End Role="SoldPaypments" Type="Self.SoldPaypments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SoldPaypments">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SoldPaypments_PaypmentStatus">
+          <End Role="PaypmentStatus" Type="Self.PaypmentStatus" Multiplicity="1" />
+          <End Role="SoldPaypments" Type="Self.SoldPaypments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaypmentStatus">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SoldPaypments">
+              <PropertyRef Name="PaypmentStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SoldPaypments_SoldOrders">
+          <End Role="SoldOrders" Type="Self.SoldOrders" Multiplicity="1" />
+          <End Role="SoldPaypments" Type="Self.SoldPaypments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoldOrders">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SoldPaypments">
+              <PropertyRef Name="SoldOrdersID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sub_Model_Brands1">
+          <End Role="Brands" Type="Self.Brands" Multiplicity="1" />
+          <End Role="Sub_Model" Type="Self.Sub_Model" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brands">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Sub_Model">
+              <PropertyRef Name="BrandID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sub_Model_Categories1">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
+          <End Role="Sub_Model" Type="Self.Sub_Model" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Sub_Model">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sub_Model_Models1">
+          <End Role="Models" Type="Self.Models" Multiplicity="1" />
+          <End Role="Sub_Model" Type="Self.Sub_Model" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Models">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Sub_Model">
+              <PropertyRef Name="ModelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sub_Model_Series1">
+          <End Role="Series" Type="Self.Series" Multiplicity="1" />
+          <End Role="Sub_Model" Type="Self.Sub_Model" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Series">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Sub_Model">
+              <PropertyRef Name="SerieID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehicles_BodyTypes">
+          <End Role="BodyTypes" Type="Self.BodyTypes" Multiplicity="1" />
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BodyTypes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Vehicles">
+              <PropertyRef Name="BodyTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehicles_Brands">
+          <End Role="Brands" Type="Self.Brands" Multiplicity="1" />
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brands">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Vehicles">
+              <PropertyRef Name="BrandID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehicles_Categories">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Vehicles">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehicles_Colors">
+          <End Role="Colors" Type="Self.Colors" Multiplicity="1" />
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colors">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Vehicles">
+              <PropertyRef Name="ColorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehicles_FuelTypes">
+          <End Role="FuelTypes" Type="Self.FuelTypes" Multiplicity="1" />
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FuelTypes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Vehicles">
+              <PropertyRef Name="FuelTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehicles_Models">
+          <End Role="Models" Type="Self.Models" Multiplicity="1" />
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Models">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Vehicles">
+              <PropertyRef Name="ModelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehicles_Series">
+          <End Role="Series" Type="Self.Series" Multiplicity="1" />
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Series">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Vehicles">
+              <PropertyRef Name="SerieID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehicles_Sub_Model">
+          <End Role="Sub_Model" Type="Self.Sub_Model" Multiplicity="1" />
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sub_Model">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Vehicles">
+              <PropertyRef Name="Sub_ModelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehicles_TransmissionType">
+          <End Role="TransmissionType" Type="Self.TransmissionType" Multiplicity="1" />
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TransmissionType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Vehicles">
+              <PropertyRef Name="TransmissionTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehicles_WheelDriveTypes">
+          <End Role="WheelDriveTypes" Type="Self.WheelDriveTypes" Multiplicity="1" />
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WheelDriveTypes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Vehicles">
+              <PropertyRef Name="WheelDriveTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ONROtomotivModelStoreContainer">
+          <EntitySet Name="Addresses" EntityType="Self.Addresses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Admins" EntityType="Self.Admins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BodyTypes" EntityType="Self.BodyTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Brands" EntityType="Self.Brands" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Colors" EntityType="Self.Colors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ComparedVehicles" EntityType="Self.ComparedVehicles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Damages" EntityType="Self.Damages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FuelTypes" EntityType="Self.FuelTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InnerEquipments" EntityType="Self.InnerEquipments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Models" EntityType="Self.Models" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Multimedia" EntityType="Self.Multimedia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OuterEquipments" EntityType="Self.OuterEquipments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaypmentStatus" EntityType="Self.PaypmentStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Photos" EntityType="Self.Photos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RentedPaypments" EntityType="Self.RentedPaypments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RentInfos" EntityType="Self.RentInfos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RentOrders" EntityType="Self.RentOrders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SaleInfos" EntityType="Self.SaleInfos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SecuritySpecs" EntityType="Self.SecuritySpecs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Series" EntityType="Self.Series" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SoldOrders" EntityType="Self.SoldOrders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SoldPaypments" EntityType="Self.SoldPaypments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sub_Model" EntityType="Self.Sub_Model" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TransmissionType" EntityType="Self.TransmissionType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vehicles" EntityType="Self.Vehicles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WheelDriveTypes" EntityType="Self.WheelDriveTypes" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Addresses_Customers" Association="Self.FK_Addresses_Customers">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Addresses" EntitySet="Addresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Brands_Categories1" Association="Self.FK_Brands_Categories1">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Brands" EntitySet="Brands" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ComparedVehicles_Vehicles" Association="Self.FK_ComparedVehicles_Vehicles">
+            <End Role="Vehicles" EntitySet="Vehicles" />
+            <End Role="ComparedVehicles" EntitySet="ComparedVehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Damages_Vehicles" Association="Self.FK_Damages_Vehicles">
+            <End Role="Vehicles" EntitySet="Vehicles" />
+            <End Role="Damages" EntitySet="Damages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InnerEquipments_Vehicles" Association="Self.FK_InnerEquipments_Vehicles">
+            <End Role="Vehicles" EntitySet="Vehicles" />
+            <End Role="InnerEquipments" EntitySet="InnerEquipments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Models_Brands1" Association="Self.FK_Models_Brands1">
+            <End Role="Brands" EntitySet="Brands" />
+            <End Role="Models" EntitySet="Models" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Models_Categories1" Association="Self.FK_Models_Categories1">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Models" EntitySet="Models" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Models_Series1" Association="Self.FK_Models_Series1">
+            <End Role="Series" EntitySet="Series" />
+            <End Role="Models" EntitySet="Models" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Multimedia_Vehicles" Association="Self.FK_Multimedia_Vehicles">
+            <End Role="Vehicles" EntitySet="Vehicles" />
+            <End Role="Multimedia" EntitySet="Multimedia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OuterEquipments_Vehicles" Association="Self.FK_OuterEquipments_Vehicles">
+            <End Role="Vehicles" EntitySet="Vehicles" />
+            <End Role="OuterEquipments" EntitySet="OuterEquipments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Photos_Vehicles" Association="Self.FK_Photos_Vehicles">
+            <End Role="Vehicles" EntitySet="Vehicles" />
+            <End Role="Photos" EntitySet="Photos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RentedPaypments_Customers" Association="Self.FK_RentedPaypments_Customers">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="RentedPaypments" EntitySet="RentedPaypments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RentedPaypments_RentOrders" Association="Self.FK_RentedPaypments_RentOrders">
+            <End Role="RentOrders" EntitySet="RentOrders" />
+            <End Role="RentedPaypments" EntitySet="RentedPaypments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RentInfos_Vehicles" Association="Self.FK_RentInfos_Vehicles">
+            <End Role="Vehicles" EntitySet="Vehicles" />
+            <End Role="RentInfos" EntitySet="RentInfos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RentInfos_Vehicles1" Association="Self.FK_RentInfos_Vehicles1">
+            <End Role="Vehicles" EntitySet="Vehicles" />
+            <End Role="RentInfos" EntitySet="RentInfos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RentOrders_Customers" Association="Self.FK_RentOrders_Customers">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="RentOrders" EntitySet="RentOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RentOrders_Vehicles" Association="Self.FK_RentOrders_Vehicles">
+            <End Role="Vehicles" EntitySet="Vehicles" />
+            <End Role="RentOrders" EntitySet="RentOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SaleInfos_Vehicles" Association="Self.FK_SaleInfos_Vehicles">
+            <End Role="Vehicles" EntitySet="Vehicles" />
+            <End Role="SaleInfos" EntitySet="SaleInfos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SecuritySpecs_Vehicles" Association="Self.FK_SecuritySpecs_Vehicles">
+            <End Role="Vehicles" EntitySet="Vehicles" />
+            <End Role="SecuritySpecs" EntitySet="SecuritySpecs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Series_Brands" Association="Self.FK_Series_Brands">
+            <End Role="Brands" EntitySet="Brands" />
+            <End Role="Series" EntitySet="Series" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Series_Categories1" Association="Self.FK_Series_Categories1">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Series" EntitySet="Series" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SoldOrders_Customers" Association="Self.FK_SoldOrders_Customers">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="SoldOrders" EntitySet="SoldOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SoldOrders_Vehicles" Association="Self.FK_SoldOrders_Vehicles">
+            <End Role="Vehicles" EntitySet="Vehicles" />
+            <End Role="SoldOrders" EntitySet="SoldOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SoldPaypments_Customers" Association="Self.FK_SoldPaypments_Customers">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="SoldPaypments" EntitySet="SoldPaypments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SoldPaypments_PaypmentStatus" Association="Self.FK_SoldPaypments_PaypmentStatus">
+            <End Role="PaypmentStatus" EntitySet="PaypmentStatus" />
+            <End Role="SoldPaypments" EntitySet="SoldPaypments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SoldPaypments_SoldOrders" Association="Self.FK_SoldPaypments_SoldOrders">
+            <End Role="SoldOrders" EntitySet="SoldOrders" />
+            <End Role="SoldPaypments" EntitySet="SoldPaypments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sub_Model_Brands1" Association="Self.FK_Sub_Model_Brands1">
+            <End Role="Brands" EntitySet="Brands" />
+            <End Role="Sub_Model" EntitySet="Sub_Model" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sub_Model_Categories1" Association="Self.FK_Sub_Model_Categories1">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Sub_Model" EntitySet="Sub_Model" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sub_Model_Models1" Association="Self.FK_Sub_Model_Models1">
+            <End Role="Models" EntitySet="Models" />
+            <End Role="Sub_Model" EntitySet="Sub_Model" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sub_Model_Series1" Association="Self.FK_Sub_Model_Series1">
+            <End Role="Series" EntitySet="Series" />
+            <End Role="Sub_Model" EntitySet="Sub_Model" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehicles_BodyTypes" Association="Self.FK_Vehicles_BodyTypes">
+            <End Role="BodyTypes" EntitySet="BodyTypes" />
+            <End Role="Vehicles" EntitySet="Vehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehicles_Brands" Association="Self.FK_Vehicles_Brands">
+            <End Role="Brands" EntitySet="Brands" />
+            <End Role="Vehicles" EntitySet="Vehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehicles_Categories" Association="Self.FK_Vehicles_Categories">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Vehicles" EntitySet="Vehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehicles_Colors" Association="Self.FK_Vehicles_Colors">
+            <End Role="Colors" EntitySet="Colors" />
+            <End Role="Vehicles" EntitySet="Vehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehicles_FuelTypes" Association="Self.FK_Vehicles_FuelTypes">
+            <End Role="FuelTypes" EntitySet="FuelTypes" />
+            <End Role="Vehicles" EntitySet="Vehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehicles_Models" Association="Self.FK_Vehicles_Models">
+            <End Role="Models" EntitySet="Models" />
+            <End Role="Vehicles" EntitySet="Vehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehicles_Series" Association="Self.FK_Vehicles_Series">
+            <End Role="Series" EntitySet="Series" />
+            <End Role="Vehicles" EntitySet="Vehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehicles_Sub_Model" Association="Self.FK_Vehicles_Sub_Model">
+            <End Role="Sub_Model" EntitySet="Sub_Model" />
+            <End Role="Vehicles" EntitySet="Vehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehicles_TransmissionType" Association="Self.FK_Vehicles_TransmissionType">
+            <End Role="TransmissionType" EntitySet="TransmissionType" />
+            <End Role="Vehicles" EntitySet="Vehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehicles_WheelDriveTypes" Association="Self.FK_Vehicles_WheelDriveTypes">
+            <End Role="WheelDriveTypes" EntitySet="WheelDriveTypes" />
+            <End Role="Vehicles" EntitySet="Vehicles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ONROtomotivModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerID" Type="Int32" Nullable="false" />
+          <Property Name="AddressName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Firstname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Town" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PostalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address1" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_Addresses_Customers" FromRole="Addresses" ToRole="Customers" />
+        </EntityType>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BodyType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BodyTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Vehicles" Relationship="Self.FK_Vehicles_BodyTypes" FromRole="BodyTypes" ToRole="Vehicles" />
+        </EntityType>
+        <EntityType Name="Brand">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryID" Type="Int32" Nullable="false" />
+          <Property Name="BrandName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_Brands_Categories1" FromRole="Brands" ToRole="Categories" />
+          <NavigationProperty Name="Models" Relationship="Self.FK_Models_Brands1" FromRole="Brands" ToRole="Models" />
+          <NavigationProperty Name="Series" Relationship="Self.FK_Series_Brands" FromRole="Brands" ToRole="Series" />
+          <NavigationProperty Name="Sub_Model" Relationship="Self.FK_Sub_Model_Brands1" FromRole="Brands" ToRole="Sub_Model" />
+          <NavigationProperty Name="Vehicles" Relationship="Self.FK_Vehicles_Brands" FromRole="Brands" ToRole="Vehicles" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Brands" Relationship="Self.FK_Brands_Categories1" FromRole="Categories" ToRole="Brands" />
+          <NavigationProperty Name="Models" Relationship="Self.FK_Models_Categories1" FromRole="Categories" ToRole="Models" />
+          <NavigationProperty Name="Series" Relationship="Self.FK_Series_Categories1" FromRole="Categories" ToRole="Series" />
+          <NavigationProperty Name="Sub_Model" Relationship="Self.FK_Sub_Model_Categories1" FromRole="Categories" ToRole="Sub_Model" />
+          <NavigationProperty Name="Vehicles" Relationship="Self.FK_Vehicles_Categories" FromRole="Categories" ToRole="Vehicles" />
+        </EntityType>
+        <EntityType Name="Color">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ColorName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Vehicles" Relationship="Self.FK_Vehicles_Colors" FromRole="Colors" ToRole="Vehicles" />
+        </EntityType>
+        <EntityType Name="ComparedVehicle">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VehicleID" Type="Int32" Nullable="false" />
+          <Property Name="CustomerID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Vehicle" Relationship="Self.FK_ComparedVehicles_Vehicles" FromRole="ComparedVehicles" ToRole="Vehicles" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Firstname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Mail" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RegisteredDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Addresses" Relationship="Self.FK_Addresses_Customers" FromRole="Customers" ToRole="Addresses" />
+          <NavigationProperty Name="RentedPaypments" Relationship="Self.FK_RentedPaypments_Customers" FromRole="Customers" ToRole="RentedPaypments" />
+          <NavigationProperty Name="RentOrders" Relationship="Self.FK_RentOrders_Customers" FromRole="Customers" ToRole="RentOrders" />
+          <NavigationProperty Name="SoldOrders" Relationship="Self.FK_SoldOrders_Customers" FromRole="Customers" ToRole="SoldOrders" />
+          <NavigationProperty Name="SoldPaypments" Relationship="Self.FK_SoldPaypments_Customers" FromRole="Customers" ToRole="SoldPaypments" />
+        </EntityType>
+        <EntityType Name="Damage">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VehicleID" Type="Int32" Nullable="false" />
+          <Property Name="IsPainted" Type="Boolean" Nullable="false" />
+          <Property Name="PaintedAreaDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsDamaged" Type="Boolean" Nullable="false" />
+          <Property Name="DamagedAreaDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Vehicle" Relationship="Self.FK_Damages_Vehicles" FromRole="Damages" ToRole="Vehicles" />
+        </EntityType>
+        <EntityType Name="FuelType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FuelTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Vehicles" Relationship="Self.FK_Vehicles_FuelTypes" FromRole="FuelTypes" ToRole="Vehicles" />
+        </EntityType>
+        <EntityType Name="InnerEquipment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VehicleID" Type="Int32" Nullable="false" />
+          <Property Name="DeriKoltuk" Type="Boolean" Nullable="false" />
+          <Property Name="KumasKoltuk" Type="Boolean" Nullable="false" />
+          <Property Name="Deri_KumasKoltuk" Type="Boolean" Nullable="false" />
+          <Property Name="ElektrikliOnCamlar" Type="Boolean" Nullable="false" />
+          <Property Name="ElektrikliArkaCamlar" Type="Boolean" Nullable="false" />
+          <Property Name="Klima_Analog" Type="Boolean" Nullable="false" />
+          <Property Name="Klima_Digital" Type="Boolean" Nullable="false" />
+          <Property Name="OtmKararanDikizAynasi" Type="Boolean" Nullable="false" />
+          <Property Name="OnKolDayama" Type="Boolean" Nullable="false" />
+          <Property Name="ArkaKolDayama" Type="Boolean" Nullable="false" />
+          <Property Name="AnahtarsizCalistirma" Type="Boolean" Nullable="false" />
+          <Property Name="AltiIleriVites" Type="Boolean" Nullable="false" />
+          <Property Name="YediIleriVites" Type="Boolean" Nullable="false" />
+          <Property Name="HidrolikDireksiyon" Type="Boolean" Nullable="false" />
+          <Property Name="FonksiyonelDireksiyon" Type="Boolean" Nullable="false" />
+          <Property Name="AyarlanabilirDireksiyon" Type="Boolean" Nullable="false" />
+          <Property Name="DeriDireksiyon" Type="Boolean" Nullable="false" />
+          <Property Name="AhsapDireksiyon" Type="Boolean" Nullable="false" />
+          <Property Name="IsitmaliDireksiyon" Type="Boolean" Nullable="false" />
+          <Property Name="Koltuklar_Elektirkli" Type="Boolean" Nullable="false" />
+          <Property Name="Koltuklar_Hafizali" Type="Boolean" Nullable="false" />
+          <Property Name="Koltuklar_Katlanır" Type="Boolean" Nullable="false" />
+          <Property Name="Koltuklar_OnIsitmali" Type="Boolean" Nullable="false" />
+          <Property Name="Koltuklar_ArkaIsitmali" Type="Boolean" Nullable="false" />
+          <Property Name="Koltuklar_Sogutmali" Type="Boolean" Nullable="false" />
+          <Property Name="HizSabitleyici" Type="Boolean" Nullable="false" />
+          <Property Name="AdaptiveCruiseControl" Type="Boolean" Nullable="false" />
+          <Property Name="SogutmaliTorpido" Type="Boolean" Nullable="false" />
+          <Property Name="YolBilgisayari" Type="Boolean" Nullable="false" />
+          <Property Name="KromKaplama" Type="Boolean" Nullable="false" />
+          <Property Name="AhsapKapama" Type="Boolean" Nullable="false" />
+          <Property Name="HeadUpDisplay" Type="Boolean" Nullable="false" />
+          <Property Name="Start_Stop" Type="Boolean" Nullable="false" />
+          <Property Name="GeceGorusKamerasi" Type="Boolean" Nullable="false" />
+          <Property Name="OnGorusKamerasi" Type="Boolean" Nullable="false" />
+          <Property Name="UcuncuSiraKoltuk" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Vehicle" Relationship="Self.FK_InnerEquipments_Vehicles" FromRole="InnerEquipments" ToRole="Vehicles" />
+        </EntityType>
+        <EntityType Name="Model">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryID" Type="Int32" Nullable="false" />
+          <Property Name="BrandID" Type="Int32" Nullable="false" />
+          <Property Name="SerieID" Type="Int32" Nullable="false" />
+          <Property Name="ModelName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Brand" Relationship="Self.FK_Models_Brands1" FromRole="Models" ToRole="Brands" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_Models_Categories1" FromRole="Models" ToRole="Categories" />
+          <NavigationProperty Name="Series" Relationship="Self.FK_Models_Series1" FromRole="Models" ToRole="Series" />
+          <NavigationProperty Name="Sub_Model" Relationship="Self.FK_Sub_Model_Models1" FromRole="Models" ToRole="Sub_Model" />
+          <NavigationProperty Name="Vehicles" Relationship="Self.FK_Vehicles_Models" FromRole="Models" ToRole="Vehicles" />
+        </EntityType>
+        <EntityType Name="Multimedia">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VehicleID" Type="Int32" Nullable="false" />
+          <Property Name="Radyo_Kasetçalar" Type="Boolean" Nullable="false" />
+          <Property Name="Radyo_CDCalar" Type="Boolean" Nullable="false" />
+          <Property Name="Radyo_MP3Calar" Type="Boolean" Nullable="false" />
+          <Property Name="TV_Navigasyon" Type="Boolean" Nullable="false" />
+          <Property Name="Bluetooth_Telefon" Type="Boolean" Nullable="false" />
+          <Property Name="USB_AUX" Type="Boolean" Nullable="false" />
+          <Property Name="AUX" Type="Boolean" Nullable="false" />
+          <Property Name="iPodBaglantisi" Type="Boolean" Nullable="false" />
+          <Property Name="AltiArtiHoparlor" Type="Boolean" Nullable="false" />
+          <Property Name="CDDegistirici" Type="Boolean" Nullable="false" />
+          <Property Name="ArkaEglencePaketi" Type="Boolean" Nullable="false" />
+          <Property Name="DVDDegistirici" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Vehicle" Relationship="Self.FK_Multimedia_Vehicles" FromRole="Multimedia" ToRole="Vehicles" />
+        </EntityType>
+        <EntityType Name="OuterEquipment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VehicleID" Type="Int32" Nullable="false" />
+          <Property Name="Hardtop" Type="Boolean" Nullable="false" />
+          <Property Name="Far_LED" Type="Boolean" Nullable="false" />
+          <Property Name="Far_Halojen" Type="Boolean" Nullable="false" />
+          <Property Name="Far_Xenon" Type="Boolean" Nullable="false" />
+          <Property Name="Far_BiXenon" Type="Boolean" Nullable="false" />
+          <Property Name="Far_Sis" Type="Boolean" Nullable="false" />
+          <Property Name="Far_Adaptif" Type="Boolean" Nullable="false" />
+          <Property Name="FarGeceSensoru" Type="Boolean" Nullable="false" />
+          <Property Name="Far_Yikama" Type="Boolean" Nullable="false" />
+          <Property Name="Aynalar_Elektrikli" Type="Boolean" Nullable="false" />
+          <Property Name="Aynalar_Katlanir" Type="Boolean" Nullable="false" />
+          <Property Name="Aynalar_Isitmali" Type="Boolean" Nullable="false" />
+          <Property Name="Aynalar_Hafizali" Type="Boolean" Nullable="false" />
+          <Property Name="ParkSensoru_Arka" Type="Boolean" Nullable="false" />
+          <Property Name="ParkSensoru_On" Type="Boolean" Nullable="false" />
+          <Property Name="AlasimliJant" Type="Boolean" Nullable="false" />
+          <Property Name="Sunroof" Type="Boolean" Nullable="false" />
+          <Property Name="PanoramikCamTavan" Type="Boolean" Nullable="false" />
+          <Property Name="YagmurSensoru" Type="Boolean" Nullable="false" />
+          <Property Name="ArkaCamBuzCozucu" Type="Boolean" Nullable="false" />
+          <Property Name="PanoramikOnCam" Type="Boolean" Nullable="false" />
+          <Property Name="RomorkCekiDemiri" Type="Boolean" Nullable="false" />
+          <Property Name="AkilliBagajKapagi" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Vehicle" Relationship="Self.FK_OuterEquipments_Vehicles" FromRole="OuterEquipments" ToRole="Vehicles" />
+        </EntityType>
+        <EntityType Name="PaypmentStatu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DidItPay" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="SoldPaypments" Relationship="Self.FK_SoldPaypments_PaypmentStatus" FromRole="PaypmentStatus" ToRole="SoldPaypments" />
+        </EntityType>
+        <EntityType Name="Photo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VehicleID" Type="Int32" Nullable="false" />
+          <Property Name="PhotoPath" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Vehicle" Relationship="Self.FK_Photos_Vehicles" FromRole="Photos" ToRole="Vehicles" />
+        </EntityType>
+        <EntityType Name="RentedPaypment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="CustomerID" Type="Int32" Nullable="false" />
+          <Property Name="RentedOrdersID" Type="Int32" Nullable="false" />
+          <Property Name="CustomerPaypmentMade" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="CustomerPaypmentMadeDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_RentedPaypments_Customers" FromRole="RentedPaypments" ToRole="Customers" />
+          <NavigationProperty Name="RentOrder" Relationship="Self.FK_RentedPaypments_RentOrders" FromRole="RentedPaypments" ToRole="RentOrders" />
+        </EntityType>
+        <EntityType Name="RentInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VehicleID" Type="Int32" Nullable="false" />
+          <Property Name="ListingPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="DiscountPrice" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="Vehicle" Relationship="Self.FK_RentInfos_Vehicles" FromRole="RentInfos" ToRole="Vehicles" />
+          <NavigationProperty Name="Vehicle1" Relationship="Self.FK_RentInfos_Vehicles1" FromRole="RentInfos" ToRole="Vehicles" />
+        </EntityType>
+        <EntityType Name="RentOrder">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VehicleID" Type="Int32" Nullable="false" />
+          <Property Name="CustomerID" Type="Int32" Nullable="false" />
+          <Property Name="RentedPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="RentalStartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RentalEndDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_RentOrders_Customers" FromRole="RentOrders" ToRole="Customers" />
+          <NavigationProperty Name="RentedPaypments" Relationship="Self.FK_RentedPaypments_RentOrders" FromRole="RentOrders" ToRole="RentedPaypments" />
+          <NavigationProperty Name="Vehicle" Relationship="Self.FK_RentOrders_Vehicles" FromRole="RentOrders" ToRole="Vehicles" />
+        </EntityType>
+        <EntityType Name="SaleInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VehicleID" Type="Int32" Nullable="false" />
+          <Property Name="ListingPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="DiscountPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="Vehicle" Relationship="Self.FK_SaleInfos_Vehicles" FromRole="SaleInfos" ToRole="Vehicles" />
+        </EntityType>
+        <EntityType Name="SecuritySpec">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VehicleID" Type="Int32" Nullable="false" />
+          <Property Name="ABC" Type="Boolean" Nullable="false" />
+          <Property Name="ABS" Type="Boolean" Nullable="false" />
+          <Property Name="ASR" Type="Boolean" Nullable="false" />
+          <Property Name="ESP" Type="Boolean" Nullable="false" />
+          <Property Name="Airmatic" Type="Boolean" Nullable="false" />
+          <Property Name="EDL" Type="Boolean" Nullable="false" />
+          <Property Name="EBA" Type="Boolean" Nullable="false" />
+          <Property Name="EBD" Type="Boolean" Nullable="false" />
+          <Property Name="TSC" Type="Boolean" Nullable="false" />
+          <Property Name="BAS" Type="Boolean" Nullable="false" />
+          <Property Name="Distronic" Type="Boolean" Nullable="false" />
+          <Property Name="YokusKalkisDestegi" Type="Boolean" Nullable="false" />
+          <Property Name="GeceGorus" Type="Boolean" Nullable="false" />
+          <Property Name="SerittenAyrilmaIkazi" Type="Boolean" Nullable="false" />
+          <Property Name="SeritDegistirmeYardimcisi" Type="Boolean" Nullable="false" />
+          <Property Name="Airbag_Surucu" Type="Boolean" Nullable="false" />
+          <Property Name="Airbag_Yolcu" Type="Boolean" Nullable="false" />
+          <Property Name="Airbag_Yan" Type="Boolean" Nullable="false" />
+          <Property Name="Airbag_Diz" Type="Boolean" Nullable="false" />
+          <Property Name="Airbag_Perde" Type="Boolean" Nullable="false" />
+          <Property Name="Airbag_Tavan" Type="Boolean" Nullable="false" />
+          <Property Name="KorNoktaUyariSistemi" Type="Boolean" Nullable="false" />
+          <Property Name="LastikArizaGostergesi" Type="Boolean" Nullable="false" />
+          <Property Name="YorgunlukTespitSistemi" Type="Boolean" Nullable="false" />
+          <Property Name="Isofix" Type="Boolean" Nullable="false" />
+          <Property Name="Alarm" Type="Boolean" Nullable="false" />
+          <Property Name="MerkeziKilit" Type="Boolean" Nullable="false" />
+          <Property Name="Immobilizer" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Vehicle" Relationship="Self.FK_SecuritySpecs_Vehicles" FromRole="SecuritySpecs" ToRole="Vehicles" />
+        </EntityType>
+        <EntityType Name="Series">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryID" Type="Int32" Nullable="false" />
+          <Property Name="BrandID" Type="Int32" Nullable="false" />
+          <Property Name="SerieName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Brand" Relationship="Self.FK_Series_Brands" FromRole="Series" ToRole="Brands" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_Series_Categories1" FromRole="Series" ToRole="Categories" />
+          <NavigationProperty Name="Models" Relationship="Self.FK_Models_Series1" FromRole="Series" ToRole="Models" />
+          <NavigationProperty Name="Sub_Model" Relationship="Self.FK_Sub_Model_Series1" FromRole="Series" ToRole="Sub_Model" />
+          <NavigationProperty Name="Vehicles" Relationship="Self.FK_Vehicles_Series" FromRole="Series" ToRole="Vehicles" />
+        </EntityType>
+        <EntityType Name="SoldOrder">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VehicleID" Type="Int32" Nullable="false" />
+          <Property Name="CustomerID" Type="Int32" Nullable="false" />
+          <Property Name="SoldPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="SoldDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="MonthlyPaypments" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="MonthlyPaypmentDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_SoldOrders_Customers" FromRole="SoldOrders" ToRole="Customers" />
+          <NavigationProperty Name="Vehicle" Relationship="Self.FK_SoldOrders_Vehicles" FromRole="SoldOrders" ToRole="Vehicles" />
+          <NavigationProperty Name="SoldPaypments" Relationship="Self.FK_SoldPaypments_SoldOrders" FromRole="SoldOrders" ToRole="SoldPaypments" />
+        </EntityType>
+        <EntityType Name="SoldPaypment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerID" Type="Int32" Nullable="false" />
+          <Property Name="SoldOrdersID" Type="Int32" Nullable="false" />
+          <Property Name="PaypmentStatusID" Type="Int32" Nullable="false" />
+          <Property Name="CustomersPaypmentMade" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="CustomerPaypmentDue" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="CustomersPaypmentMadeDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_SoldPaypments_Customers" FromRole="SoldPaypments" ToRole="Customers" />
+          <NavigationProperty Name="PaypmentStatu" Relationship="Self.FK_SoldPaypments_PaypmentStatus" FromRole="SoldPaypments" ToRole="PaypmentStatus" />
+          <NavigationProperty Name="SoldOrder" Relationship="Self.FK_SoldPaypments_SoldOrders" FromRole="SoldPaypments" ToRole="SoldOrders" />
+        </EntityType>
+        <EntityType Name="Sub_Model">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryID" Type="Int32" Nullable="false" />
+          <Property Name="BrandID" Type="Int32" Nullable="false" />
+          <Property Name="SerieID" Type="Int32" Nullable="false" />
+          <Property Name="ModelID" Type="Int32" Nullable="false" />
+          <Property Name="Sub_ModelName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Brand" Relationship="Self.FK_Sub_Model_Brands1" FromRole="Sub_Model" ToRole="Brands" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_Sub_Model_Categories1" FromRole="Sub_Model" ToRole="Categories" />
+          <NavigationProperty Name="Model" Relationship="Self.FK_Sub_Model_Models1" FromRole="Sub_Model" ToRole="Models" />
+          <NavigationProperty Name="Series" Relationship="Self.FK_Sub_Model_Series1" FromRole="Sub_Model" ToRole="Series" />
+          <NavigationProperty Name="Vehicles" Relationship="Self.FK_Vehicles_Sub_Model" FromRole="Sub_Model" ToRole="Vehicles" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TransmissionType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TransmissionTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Vehicles" Relationship="Self.FK_Vehicles_TransmissionType" FromRole="TransmissionType" ToRole="Vehicles" />
+        </EntityType>
+        <EntityType Name="Vehicle">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryID" Type="Int32" Nullable="false" />
+          <Property Name="BrandID" Type="Int32" Nullable="false" />
+          <Property Name="SerieID" Type="Int32" Nullable="false" />
+          <Property Name="ModelID" Type="Int32" Nullable="false" />
+          <Property Name="Sub_ModelID" Type="Int32" Nullable="false" />
+          <Property Name="FuelTypeID" Type="Int32" Nullable="false" />
+          <Property Name="TransmissionTypeID" Type="Int32" Nullable="false" />
+          <Property Name="BodyTypeID" Type="Int32" Nullable="false" />
+          <Property Name="WheelDriveTypeID" Type="Int32" Nullable="false" />
+          <Property Name="ColorID" Type="Int32" Nullable="false" />
+          <Property Name="ProductName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Year" Type="Int32" Nullable="false" />
+          <Property Name="ListingDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="KM" Type="Int32" Nullable="false" />
+          <Property Name="EngineCapacity" Type="Int32" Nullable="false" />
+          <Property Name="EngineHP" Type="Int32" Nullable="false" />
+          <Property Name="Warranty" Type="Boolean" Nullable="false" />
+          <Property Name="Region" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Trade" Type="Boolean" Nullable="false" />
+          <Property Name="Condition" Type="Boolean" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="MasterPhotoPath" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="BodyType" Relationship="Self.FK_Vehicles_BodyTypes" FromRole="Vehicles" ToRole="BodyTypes" />
+          <NavigationProperty Name="Brand" Relationship="Self.FK_Vehicles_Brands" FromRole="Vehicles" ToRole="Brands" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_Vehicles_Categories" FromRole="Vehicles" ToRole="Categories" />
+          <NavigationProperty Name="Color" Relationship="Self.FK_Vehicles_Colors" FromRole="Vehicles" ToRole="Colors" />
+          <NavigationProperty Name="ComparedVehicles" Relationship="Self.FK_ComparedVehicles_Vehicles" FromRole="Vehicles" ToRole="ComparedVehicles" />
+          <NavigationProperty Name="Damages" Relationship="Self.FK_Damages_Vehicles" FromRole="Vehicles" ToRole="Damages" />
+          <NavigationProperty Name="FuelType" Relationship="Self.FK_Vehicles_FuelTypes" FromRole="Vehicles" ToRole="FuelTypes" />
+          <NavigationProperty Name="InnerEquipments" Relationship="Self.FK_InnerEquipments_Vehicles" FromRole="Vehicles" ToRole="InnerEquipments" />
+          <NavigationProperty Name="Model" Relationship="Self.FK_Vehicles_Models" FromRole="Vehicles" ToRole="Models" />
+          <NavigationProperty Name="Multimedias" Relationship="Self.FK_Multimedia_Vehicles" FromRole="Vehicles" ToRole="Multimedia" />
+          <NavigationProperty Name="OuterEquipments" Relationship="Self.FK_OuterEquipments_Vehicles" FromRole="Vehicles" ToRole="OuterEquipments" />
+          <NavigationProperty Name="Photos" Relationship="Self.FK_Photos_Vehicles" FromRole="Vehicles" ToRole="Photos" />
+          <NavigationProperty Name="RentInfos" Relationship="Self.FK_RentInfos_Vehicles" FromRole="Vehicles" ToRole="RentInfos" />
+          <NavigationProperty Name="RentInfos1" Relationship="Self.FK_RentInfos_Vehicles1" FromRole="Vehicles" ToRole="RentInfos" />
+          <NavigationProperty Name="RentOrders" Relationship="Self.FK_RentOrders_Vehicles" FromRole="Vehicles" ToRole="RentOrders" />
+          <NavigationProperty Name="SaleInfos" Relationship="Self.FK_SaleInfos_Vehicles" FromRole="Vehicles" ToRole="SaleInfos" />
+          <NavigationProperty Name="SecuritySpecs" Relationship="Self.FK_SecuritySpecs_Vehicles" FromRole="Vehicles" ToRole="SecuritySpecs" />
+          <NavigationProperty Name="Series" Relationship="Self.FK_Vehicles_Series" FromRole="Vehicles" ToRole="Series" />
+          <NavigationProperty Name="SoldOrders" Relationship="Self.FK_SoldOrders_Vehicles" FromRole="Vehicles" ToRole="SoldOrders" />
+          <NavigationProperty Name="Sub_Model" Relationship="Self.FK_Vehicles_Sub_Model" FromRole="Vehicles" ToRole="Sub_Model" />
+          <NavigationProperty Name="TransmissionType" Relationship="Self.FK_Vehicles_TransmissionType" FromRole="Vehicles" ToRole="TransmissionType" />
+          <NavigationProperty Name="WheelDriveType" Relationship="Self.FK_Vehicles_WheelDriveTypes" FromRole="Vehicles" ToRole="WheelDriveTypes" />
+        </EntityType>
+        <EntityType Name="WheelDriveType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WheelDriveTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Vehicles" Relationship="Self.FK_Vehicles_WheelDriveTypes" FromRole="WheelDriveTypes" ToRole="Vehicles" />
+        </EntityType>
+        <Association Name="FK_Addresses_Customers">
+          <End Role="Customers" Type="Self.Customer" Multiplicity="1" />
+          <End Role="Addresses" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Addresses">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehicles_BodyTypes">
+          <End Role="BodyTypes" Type="Self.BodyType" Multiplicity="1" />
+          <End Role="Vehicles" Type="Self.Vehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BodyTypes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Vehicles">
+              <PropertyRef Name="BodyTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Brands_Categories1">
+          <End Role="Categories" Type="Self.Category" Multiplicity="1" />
+          <End Role="Brands" Type="Self.Brand" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Brands">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Models_Brands1">
+          <End Role="Brands" Type="Self.Brand" Multiplicity="1" />
+          <End Role="Models" Type="Self.Model" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brands">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Models">
+              <PropertyRef Name="BrandID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Series_Brands">
+          <End Role="Brands" Type="Self.Brand" Multiplicity="1" />
+          <End Role="Series" Type="Self.Series" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brands">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Series">
+              <PropertyRef Name="BrandID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sub_Model_Brands1">
+          <End Role="Brands" Type="Self.Brand" Multiplicity="1" />
+          <End Role="Sub_Model" Type="Self.Sub_Model" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brands">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Sub_Model">
+              <PropertyRef Name="BrandID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehicles_Brands">
+          <End Role="Brands" Type="Self.Brand" Multiplicity="1" />
+          <End Role="Vehicles" Type="Self.Vehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brands">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Vehicles">
+              <PropertyRef Name="BrandID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Models_Categories1">
+          <End Role="Categories" Type="Self.Category" Multiplicity="1" />
+          <End Role="Models" Type="Self.Model" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Models">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Series_Categories1">
+          <End Role="Categories" Type="Self.Category" Multiplicity="1" />
+          <End Role="Series" Type="Self.Series" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Series">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sub_Model_Categories1">
+          <End Role="Categories" Type="Self.Category" Multiplicity="1" />
+          <End Role="Sub_Model" Type="Self.Sub_Model" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Sub_Model">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehicles_Categories">
+          <End Role="Categories" Type="Self.Category" Multiplicity="1" />
+          <End Role="Vehicles" Type="Self.Vehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Vehicles">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehicles_Colors">
+          <End Role="Colors" Type="Self.Color" Multiplicity="1" />
+          <End Role="Vehicles" Type="Self.Vehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colors">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Vehicles">
+              <PropertyRef Name="ColorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ComparedVehicles_Vehicles">
+          <End Role="Vehicles" Type="Self.Vehicle" Multiplicity="1" />
+          <End Role="ComparedVehicles" Type="Self.ComparedVehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ComparedVehicles">
+              <PropertyRef Name="VehicleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RentedPaypments_Customers">
+          <End Role="Customers" Type="Self.Customer" Multiplicity="1" />
+          <End Role="RentedPaypments" Type="Self.RentedPaypment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RentedPaypments">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RentOrders_Customers">
+          <End Role="Customers" Type="Self.Customer" Multiplicity="1" />
+          <End Role="RentOrders" Type="Self.RentOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RentOrders">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SoldOrders_Customers">
+          <End Role="Customers" Type="Self.Customer" Multiplicity="1" />
+          <End Role="SoldOrders" Type="Self.SoldOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SoldOrders">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SoldPaypments_Customers">
+          <End Role="Customers" Type="Self.Customer" Multiplicity="1" />
+          <End Role="SoldPaypments" Type="Self.SoldPaypment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SoldPaypments">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Damages_Vehicles">
+          <End Role="Vehicles" Type="Self.Vehicle" Multiplicity="1" />
+          <End Role="Damages" Type="Self.Damage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Damages">
+              <PropertyRef Name="VehicleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehicles_FuelTypes">
+          <End Role="FuelTypes" Type="Self.FuelType" Multiplicity="1" />
+          <End Role="Vehicles" Type="Self.Vehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FuelTypes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Vehicles">
+              <PropertyRef Name="FuelTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InnerEquipments_Vehicles">
+          <End Role="Vehicles" Type="Self.Vehicle" Multiplicity="1" />
+          <End Role="InnerEquipments" Type="Self.InnerEquipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="InnerEquipments">
+              <PropertyRef Name="VehicleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Models_Series1">
+          <End Role="Series" Type="Self.Series" Multiplicity="1" />
+          <End Role="Models" Type="Self.Model" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Series">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Models">
+              <PropertyRef Name="SerieID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sub_Model_Models1">
+          <End Role="Models" Type="Self.Model" Multiplicity="1" />
+          <End Role="Sub_Model" Type="Self.Sub_Model" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Models">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Sub_Model">
+              <PropertyRef Name="ModelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehicles_Models">
+          <End Role="Models" Type="Self.Model" Multiplicity="1" />
+          <End Role="Vehicles" Type="Self.Vehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Models">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Vehicles">
+              <PropertyRef Name="ModelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Multimedia_Vehicles">
+          <End Role="Vehicles" Type="Self.Vehicle" Multiplicity="1" />
+          <End Role="Multimedia" Type="Self.Multimedia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Multimedia">
+              <PropertyRef Name="VehicleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OuterEquipments_Vehicles">
+          <End Role="Vehicles" Type="Self.Vehicle" Multiplicity="1" />
+          <End Role="OuterEquipments" Type="Self.OuterEquipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OuterEquipments">
+              <PropertyRef Name="VehicleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SoldPaypments_PaypmentStatus">
+          <End Role="PaypmentStatus" Type="Self.PaypmentStatu" Multiplicity="1" />
+          <End Role="SoldPaypments" Type="Self.SoldPaypment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaypmentStatus">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SoldPaypments">
+              <PropertyRef Name="PaypmentStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Photos_Vehicles">
+          <End Role="Vehicles" Type="Self.Vehicle" Multiplicity="1" />
+          <End Role="Photos" Type="Self.Photo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Photos">
+              <PropertyRef Name="VehicleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RentedPaypments_RentOrders">
+          <End Role="RentOrders" Type="Self.RentOrder" Multiplicity="1" />
+          <End Role="RentedPaypments" Type="Self.RentedPaypment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RentOrders">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RentedPaypments">
+              <PropertyRef Name="RentedOrdersID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RentInfos_Vehicles">
+          <End Role="Vehicles" Type="Self.Vehicle" Multiplicity="1" />
+          <End Role="RentInfos" Type="Self.RentInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RentInfos">
+              <PropertyRef Name="VehicleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RentInfos_Vehicles1">
+          <End Role="Vehicles" Type="Self.Vehicle" Multiplicity="1" />
+          <End Role="RentInfos" Type="Self.RentInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RentInfos">
+              <PropertyRef Name="VehicleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RentOrders_Vehicles">
+          <End Role="Vehicles" Type="Self.Vehicle" Multiplicity="1" />
+          <End Role="RentOrders" Type="Self.RentOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RentOrders">
+              <PropertyRef Name="VehicleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SaleInfos_Vehicles">
+          <End Role="Vehicles" Type="Self.Vehicle" Multiplicity="1" />
+          <End Role="SaleInfos" Type="Self.SaleInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SaleInfos">
+              <PropertyRef Name="VehicleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SecuritySpecs_Vehicles">
+          <End Role="Vehicles" Type="Self.Vehicle" Multiplicity="1" />
+          <End Role="SecuritySpecs" Type="Self.SecuritySpec" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SecuritySpecs">
+              <PropertyRef Name="VehicleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sub_Model_Series1">
+          <End Role="Series" Type="Self.Series" Multiplicity="1" />
+          <End Role="Sub_Model" Type="Self.Sub_Model" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Series">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Sub_Model">
+              <PropertyRef Name="SerieID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehicles_Series">
+          <End Role="Series" Type="Self.Series" Multiplicity="1" />
+          <End Role="Vehicles" Type="Self.Vehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Series">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Vehicles">
+              <PropertyRef Name="SerieID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SoldOrders_Vehicles">
+          <End Role="Vehicles" Type="Self.Vehicle" Multiplicity="1" />
+          <End Role="SoldOrders" Type="Self.SoldOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SoldOrders">
+              <PropertyRef Name="VehicleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SoldPaypments_SoldOrders">
+          <End Role="SoldOrders" Type="Self.SoldOrder" Multiplicity="1" />
+          <End Role="SoldPaypments" Type="Self.SoldPaypment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoldOrders">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SoldPaypments">
+              <PropertyRef Name="SoldOrdersID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehicles_Sub_Model">
+          <End Role="Sub_Model" Type="Self.Sub_Model" Multiplicity="1" />
+          <End Role="Vehicles" Type="Self.Vehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sub_Model">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Vehicles">
+              <PropertyRef Name="Sub_ModelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehicles_TransmissionType">
+          <End Role="TransmissionType" Type="Self.TransmissionType" Multiplicity="1" />
+          <End Role="Vehicles" Type="Self.Vehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TransmissionType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Vehicles">
+              <PropertyRef Name="TransmissionTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehicles_WheelDriveTypes">
+          <End Role="WheelDriveTypes" Type="Self.WheelDriveType" Multiplicity="1" />
+          <End Role="Vehicles" Type="Self.Vehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WheelDriveTypes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Vehicles">
+              <PropertyRef Name="WheelDriveTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ONROtomotivEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Addresses" EntityType="Self.Address" />
+          <EntitySet Name="Admins" EntityType="Self.Admin" />
+          <EntitySet Name="BodyTypes" EntityType="Self.BodyType" />
+          <EntitySet Name="Brands" EntityType="Self.Brand" />
+          <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="Colors" EntityType="Self.Color" />
+          <EntitySet Name="ComparedVehicles" EntityType="Self.ComparedVehicle" />
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="Damages" EntityType="Self.Damage" />
+          <EntitySet Name="FuelTypes" EntityType="Self.FuelType" />
+          <EntitySet Name="InnerEquipments" EntityType="Self.InnerEquipment" />
+          <EntitySet Name="Models" EntityType="Self.Model" />
+          <EntitySet Name="Multimedias" EntityType="Self.Multimedia" />
+          <EntitySet Name="OuterEquipments" EntityType="Self.OuterEquipment" />
+          <EntitySet Name="PaypmentStatus" EntityType="Self.PaypmentStatu" />
+          <EntitySet Name="Photos" EntityType="Self.Photo" />
+          <EntitySet Name="RentedPaypments" EntityType="Self.RentedPaypment" />
+          <EntitySet Name="RentInfos" EntityType="Self.RentInfo" />
+          <EntitySet Name="RentOrders" EntityType="Self.RentOrder" />
+          <EntitySet Name="SaleInfos" EntityType="Self.SaleInfo" />
+          <EntitySet Name="SecuritySpecs" EntityType="Self.SecuritySpec" />
+          <EntitySet Name="Series" EntityType="Self.Series" />
+          <EntitySet Name="SoldOrders" EntityType="Self.SoldOrder" />
+          <EntitySet Name="SoldPaypments" EntityType="Self.SoldPaypment" />
+          <EntitySet Name="Sub_Model" EntityType="Self.Sub_Model" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="TransmissionTypes" EntityType="Self.TransmissionType" />
+          <EntitySet Name="Vehicles" EntityType="Self.Vehicle" />
+          <EntitySet Name="WheelDriveTypes" EntityType="Self.WheelDriveType" />
+          <AssociationSet Name="FK_Addresses_Customers" Association="Self.FK_Addresses_Customers">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Addresses" EntitySet="Addresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehicles_BodyTypes" Association="Self.FK_Vehicles_BodyTypes">
+            <End Role="BodyTypes" EntitySet="BodyTypes" />
+            <End Role="Vehicles" EntitySet="Vehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Brands_Categories1" Association="Self.FK_Brands_Categories1">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Brands" EntitySet="Brands" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Models_Brands1" Association="Self.FK_Models_Brands1">
+            <End Role="Brands" EntitySet="Brands" />
+            <End Role="Models" EntitySet="Models" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Series_Brands" Association="Self.FK_Series_Brands">
+            <End Role="Brands" EntitySet="Brands" />
+            <End Role="Series" EntitySet="Series" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sub_Model_Brands1" Association="Self.FK_Sub_Model_Brands1">
+            <End Role="Brands" EntitySet="Brands" />
+            <End Role="Sub_Model" EntitySet="Sub_Model" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehicles_Brands" Association="Self.FK_Vehicles_Brands">
+            <End Role="Brands" EntitySet="Brands" />
+            <End Role="Vehicles" EntitySet="Vehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Models_Categories1" Association="Self.FK_Models_Categories1">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Models" EntitySet="Models" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Series_Categories1" Association="Self.FK_Series_Categories1">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Series" EntitySet="Series" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sub_Model_Categories1" Association="Self.FK_Sub_Model_Categories1">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Sub_Model" EntitySet="Sub_Model" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehicles_Categories" Association="Self.FK_Vehicles_Categories">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Vehicles" EntitySet="Vehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehicles_Colors" Association="Self.FK_Vehicles_Colors">
+            <End Role="Colors" EntitySet="Colors" />
+            <End Role="Vehicles" EntitySet="Vehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ComparedVehicles_Vehicles" Association="Self.FK_ComparedVehicles_Vehicles">
+            <End Role="Vehicles" EntitySet="Vehicles" />
+            <End Role="ComparedVehicles" EntitySet="ComparedVehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RentedPaypments_Customers" Association="Self.FK_RentedPaypments_Customers">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="RentedPaypments" EntitySet="RentedPaypments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RentOrders_Customers" Association="Self.FK_RentOrders_Customers">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="RentOrders" EntitySet="RentOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SoldOrders_Customers" Association="Self.FK_SoldOrders_Customers">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="SoldOrders" EntitySet="SoldOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SoldPaypments_Customers" Association="Self.FK_SoldPaypments_Customers">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="SoldPaypments" EntitySet="SoldPaypments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Damages_Vehicles" Association="Self.FK_Damages_Vehicles">
+            <End Role="Vehicles" EntitySet="Vehicles" />
+            <End Role="Damages" EntitySet="Damages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehicles_FuelTypes" Association="Self.FK_Vehicles_FuelTypes">
+            <End Role="FuelTypes" EntitySet="FuelTypes" />
+            <End Role="Vehicles" EntitySet="Vehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InnerEquipments_Vehicles" Association="Self.FK_InnerEquipments_Vehicles">
+            <End Role="Vehicles" EntitySet="Vehicles" />
+            <End Role="InnerEquipments" EntitySet="InnerEquipments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Models_Series1" Association="Self.FK_Models_Series1">
+            <End Role="Series" EntitySet="Series" />
+            <End Role="Models" EntitySet="Models" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sub_Model_Models1" Association="Self.FK_Sub_Model_Models1">
+            <End Role="Models" EntitySet="Models" />
+            <End Role="Sub_Model" EntitySet="Sub_Model" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehicles_Models" Association="Self.FK_Vehicles_Models">
+            <End Role="Models" EntitySet="Models" />
+            <End Role="Vehicles" EntitySet="Vehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Multimedia_Vehicles" Association="Self.FK_Multimedia_Vehicles">
+            <End Role="Vehicles" EntitySet="Vehicles" />
+            <End Role="Multimedia" EntitySet="Multimedias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OuterEquipments_Vehicles" Association="Self.FK_OuterEquipments_Vehicles">
+            <End Role="Vehicles" EntitySet="Vehicles" />
+            <End Role="OuterEquipments" EntitySet="OuterEquipments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SoldPaypments_PaypmentStatus" Association="Self.FK_SoldPaypments_PaypmentStatus">
+            <End Role="PaypmentStatus" EntitySet="PaypmentStatus" />
+            <End Role="SoldPaypments" EntitySet="SoldPaypments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Photos_Vehicles" Association="Self.FK_Photos_Vehicles">
+            <End Role="Vehicles" EntitySet="Vehicles" />
+            <End Role="Photos" EntitySet="Photos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RentedPaypments_RentOrders" Association="Self.FK_RentedPaypments_RentOrders">
+            <End Role="RentOrders" EntitySet="RentOrders" />
+            <End Role="RentedPaypments" EntitySet="RentedPaypments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RentInfos_Vehicles" Association="Self.FK_RentInfos_Vehicles">
+            <End Role="Vehicles" EntitySet="Vehicles" />
+            <End Role="RentInfos" EntitySet="RentInfos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RentInfos_Vehicles1" Association="Self.FK_RentInfos_Vehicles1">
+            <End Role="Vehicles" EntitySet="Vehicles" />
+            <End Role="RentInfos" EntitySet="RentInfos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RentOrders_Vehicles" Association="Self.FK_RentOrders_Vehicles">
+            <End Role="Vehicles" EntitySet="Vehicles" />
+            <End Role="RentOrders" EntitySet="RentOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SaleInfos_Vehicles" Association="Self.FK_SaleInfos_Vehicles">
+            <End Role="Vehicles" EntitySet="Vehicles" />
+            <End Role="SaleInfos" EntitySet="SaleInfos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SecuritySpecs_Vehicles" Association="Self.FK_SecuritySpecs_Vehicles">
+            <End Role="Vehicles" EntitySet="Vehicles" />
+            <End Role="SecuritySpecs" EntitySet="SecuritySpecs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sub_Model_Series1" Association="Self.FK_Sub_Model_Series1">
+            <End Role="Series" EntitySet="Series" />
+            <End Role="Sub_Model" EntitySet="Sub_Model" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehicles_Series" Association="Self.FK_Vehicles_Series">
+            <End Role="Series" EntitySet="Series" />
+            <End Role="Vehicles" EntitySet="Vehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SoldOrders_Vehicles" Association="Self.FK_SoldOrders_Vehicles">
+            <End Role="Vehicles" EntitySet="Vehicles" />
+            <End Role="SoldOrders" EntitySet="SoldOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SoldPaypments_SoldOrders" Association="Self.FK_SoldPaypments_SoldOrders">
+            <End Role="SoldOrders" EntitySet="SoldOrders" />
+            <End Role="SoldPaypments" EntitySet="SoldPaypments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehicles_Sub_Model" Association="Self.FK_Vehicles_Sub_Model">
+            <End Role="Sub_Model" EntitySet="Sub_Model" />
+            <End Role="Vehicles" EntitySet="Vehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehicles_TransmissionType" Association="Self.FK_Vehicles_TransmissionType">
+            <End Role="TransmissionType" EntitySet="TransmissionTypes" />
+            <End Role="Vehicles" EntitySet="Vehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehicles_WheelDriveTypes" Association="Self.FK_Vehicles_WheelDriveTypes">
+            <End Role="WheelDriveTypes" EntitySet="WheelDriveTypes" />
+            <End Role="Vehicles" EntitySet="Vehicles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ONROtomotivModelStoreContainer" CdmEntityContainer="ONROtomotivEntities">
+          <EntitySetMapping Name="Addresses">
+            <EntityTypeMapping TypeName="ONROtomotivModel.Address">
+              <MappingFragment StoreEntitySet="Addresses">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="AddressName" ColumnName="AddressName" />
+                <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+                <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Town" ColumnName="Town" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="Address1" ColumnName="Address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Admins">
+            <EntityTypeMapping TypeName="ONROtomotivModel.Admin">
+              <MappingFragment StoreEntitySet="Admins">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BodyTypes">
+            <EntityTypeMapping TypeName="ONROtomotivModel.BodyType">
+              <MappingFragment StoreEntitySet="BodyTypes">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="BodyTypeName" ColumnName="BodyTypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Brands">
+            <EntityTypeMapping TypeName="ONROtomotivModel.Brand">
+              <MappingFragment StoreEntitySet="Brands">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="ONROtomotivModel.Category">
+              <MappingFragment StoreEntitySet="Categories">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Colors">
+            <EntityTypeMapping TypeName="ONROtomotivModel.Color">
+              <MappingFragment StoreEntitySet="Colors">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ColorName" ColumnName="ColorName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ComparedVehicles">
+            <EntityTypeMapping TypeName="ONROtomotivModel.ComparedVehicle">
+              <MappingFragment StoreEntitySet="ComparedVehicles">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="VehicleID" ColumnName="VehicleID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="ONROtomotivModel.Customer">
+              <MappingFragment StoreEntitySet="Customers">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+                <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="RegisteredDate" ColumnName="RegisteredDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Damages">
+            <EntityTypeMapping TypeName="ONROtomotivModel.Damage">
+              <MappingFragment StoreEntitySet="Damages">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="VehicleID" ColumnName="VehicleID" />
+                <ScalarProperty Name="IsPainted" ColumnName="IsPainted" />
+                <ScalarProperty Name="PaintedAreaDescription" ColumnName="PaintedAreaDescription" />
+                <ScalarProperty Name="IsDamaged" ColumnName="IsDamaged" />
+                <ScalarProperty Name="DamagedAreaDescription" ColumnName="DamagedAreaDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FuelTypes">
+            <EntityTypeMapping TypeName="ONROtomotivModel.FuelType">
+              <MappingFragment StoreEntitySet="FuelTypes">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FuelTypeName" ColumnName="FuelTypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InnerEquipments">
+            <EntityTypeMapping TypeName="ONROtomotivModel.InnerEquipment">
+              <MappingFragment StoreEntitySet="InnerEquipments">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="VehicleID" ColumnName="VehicleID" />
+                <ScalarProperty Name="DeriKoltuk" ColumnName="DeriKoltuk" />
+                <ScalarProperty Name="KumasKoltuk" ColumnName="KumasKoltuk" />
+                <ScalarProperty Name="Deri_KumasKoltuk" ColumnName="Deri_KumasKoltuk" />
+                <ScalarProperty Name="ElektrikliOnCamlar" ColumnName="ElektrikliOnCamlar" />
+                <ScalarProperty Name="ElektrikliArkaCamlar" ColumnName="ElektrikliArkaCamlar" />
+                <ScalarProperty Name="Klima_Analog" ColumnName="Klima_Analog" />
+                <ScalarProperty Name="Klima_Digital" ColumnName="Klima_Digital" />
+                <ScalarProperty Name="OtmKararanDikizAynasi" ColumnName="OtmKararanDikizAynasi" />
+                <ScalarProperty Name="OnKolDayama" ColumnName="OnKolDayama" />
+                <ScalarProperty Name="ArkaKolDayama" ColumnName="ArkaKolDayama" />
+                <ScalarProperty Name="AnahtarsizCalistirma" ColumnName="AnahtarsizCalistirma" />
+                <ScalarProperty Name="AltiIleriVites" ColumnName="AltiIleriVites" />
+                <ScalarProperty Name="YediIleriVites" ColumnName="YediIleriVites" />
+                <ScalarProperty Name="HidrolikDireksiyon" ColumnName="HidrolikDireksiyon" />
+                <ScalarProperty Name="FonksiyonelDireksiyon" ColumnName="FonksiyonelDireksiyon" />
+                <ScalarProperty Name="AyarlanabilirDireksiyon" ColumnName="AyarlanabilirDireksiyon" />
+                <ScalarProperty Name="DeriDireksiyon" ColumnName="DeriDireksiyon" />
+                <ScalarProperty Name="AhsapDireksiyon" ColumnName="AhsapDireksiyon" />
+                <ScalarProperty Name="IsitmaliDireksiyon" ColumnName="IsitmaliDireksiyon" />
+                <ScalarProperty Name="Koltuklar_Elektirkli" ColumnName="Koltuklar_Elektirkli" />
+                <ScalarProperty Name="Koltuklar_Hafizali" ColumnName="Koltuklar_Hafizali" />
+                <ScalarProperty Name="Koltuklar_Katlanır" ColumnName="Koltuklar_Katlanır" />
+                <ScalarProperty Name="Koltuklar_OnIsitmali" ColumnName="Koltuklar_OnIsitmali" />
+                <ScalarProperty Name="Koltuklar_ArkaIsitmali" ColumnName="Koltuklar_ArkaIsitmali" />
+                <ScalarProperty Name="Koltuklar_Sogutmali" ColumnName="Koltuklar_Sogutmali" />
+                <ScalarProperty Name="HizSabitleyici" ColumnName="HizSabitleyici" />
+                <ScalarProperty Name="AdaptiveCruiseControl" ColumnName="AdaptiveCruiseControl" />
+                <ScalarProperty Name="SogutmaliTorpido" ColumnName="SogutmaliTorpido" />
+                <ScalarProperty Name="YolBilgisayari" ColumnName="YolBilgisayari" />
+                <ScalarProperty Name="KromKaplama" ColumnName="KromKaplama" />
+                <ScalarProperty Name="AhsapKapama" ColumnName="AhsapKapama" />
+                <ScalarProperty Name="HeadUpDisplay" ColumnName="HeadUpDisplay" />
+                <ScalarProperty Name="Start_Stop" ColumnName="Start_Stop" />
+                <ScalarProperty Name="GeceGorusKamerasi" ColumnName="GeceGorusKamerasi" />
+                <ScalarProperty Name="OnGorusKamerasi" ColumnName="OnGorusKamerasi" />
+                <ScalarProperty Name="UcuncuSiraKoltuk" ColumnName="UcuncuSiraKoltuk" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Models">
+            <EntityTypeMapping TypeName="ONROtomotivModel.Model">
+              <MappingFragment StoreEntitySet="Models">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+                <ScalarProperty Name="SerieID" ColumnName="SerieID" />
+                <ScalarProperty Name="ModelName" ColumnName="ModelName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Multimedias">
+            <EntityTypeMapping TypeName="ONROtomotivModel.Multimedia">
+              <MappingFragment StoreEntitySet="Multimedia">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="VehicleID" ColumnName="VehicleID" />
+                <ScalarProperty Name="Radyo_Kasetçalar" ColumnName="Radyo_Kasetçalar" />
+                <ScalarProperty Name="Radyo_CDCalar" ColumnName="Radyo_CDCalar" />
+                <ScalarProperty Name="Radyo_MP3Calar" ColumnName="Radyo_MP3Calar" />
+                <ScalarProperty Name="TV_Navigasyon" ColumnName="TV_Navigasyon" />
+                <ScalarProperty Name="Bluetooth_Telefon" ColumnName="Bluetooth_Telefon" />
+                <ScalarProperty Name="USB_AUX" ColumnName="USB_AUX" />
+                <ScalarProperty Name="AUX" ColumnName="AUX" />
+                <ScalarProperty Name="iPodBaglantisi" ColumnName="iPodBaglantisi" />
+                <ScalarProperty Name="AltiArtiHoparlor" ColumnName="AltiArtiHoparlor" />
+                <ScalarProperty Name="CDDegistirici" ColumnName="CDDegistirici" />
+                <ScalarProperty Name="ArkaEglencePaketi" ColumnName="ArkaEglencePaketi" />
+                <ScalarProperty Name="DVDDegistirici" ColumnName="DVDDegistirici" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OuterEquipments">
+            <EntityTypeMapping TypeName="ONROtomotivModel.OuterEquipment">
+              <MappingFragment StoreEntitySet="OuterEquipments">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="VehicleID" ColumnName="VehicleID" />
+                <ScalarProperty Name="Hardtop" ColumnName="Hardtop" />
+                <ScalarProperty Name="Far_LED" ColumnName="Far_LED" />
+                <ScalarProperty Name="Far_Halojen" ColumnName="Far_Halojen" />
+                <ScalarProperty Name="Far_Xenon" ColumnName="Far_Xenon" />
+                <ScalarProperty Name="Far_BiXenon" ColumnName="Far_BiXenon" />
+                <ScalarProperty Name="Far_Sis" ColumnName="Far_Sis" />
+                <ScalarProperty Name="Far_Adaptif" ColumnName="Far_Adaptif" />
+                <ScalarProperty Name="FarGeceSensoru" ColumnName="FarGeceSensoru" />
+                <ScalarProperty Name="Far_Yikama" ColumnName="Far_Yikama" />
+                <ScalarProperty Name="Aynalar_Elektrikli" ColumnName="Aynalar_Elektrikli" />
+                <ScalarProperty Name="Aynalar_Katlanir" ColumnName="Aynalar_Katlanir" />
+                <ScalarProperty Name="Aynalar_Isitmali" ColumnName="Aynalar_Isitmali" />
+                <ScalarProperty Name="Aynalar_Hafizali" ColumnName="Aynalar_Hafizali" />
+                <ScalarProperty Name="ParkSensoru_Arka" ColumnName="ParkSensoru_Arka" />
+                <ScalarProperty Name="ParkSensoru_On" ColumnName="ParkSensoru_On" />
+                <ScalarProperty Name="AlasimliJant" ColumnName="AlasimliJant" />
+                <ScalarProperty Name="Sunroof" ColumnName="Sunroof" />
+                <ScalarProperty Name="PanoramikCamTavan" ColumnName="PanoramikCamTavan" />
+                <ScalarProperty Name="YagmurSensoru" ColumnName="YagmurSensoru" />
+                <ScalarProperty Name="ArkaCamBuzCozucu" ColumnName="ArkaCamBuzCozucu" />
+                <ScalarProperty Name="PanoramikOnCam" ColumnName="PanoramikOnCam" />
+                <ScalarProperty Name="RomorkCekiDemiri" ColumnName="RomorkCekiDemiri" />
+                <ScalarProperty Name="AkilliBagajKapagi" ColumnName="AkilliBagajKapagi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaypmentStatus">
+            <EntityTypeMapping TypeName="ONROtomotivModel.PaypmentStatu">
+              <MappingFragment StoreEntitySet="PaypmentStatus">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DidItPay" ColumnName="DidItPay" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Photos">
+            <EntityTypeMapping TypeName="ONROtomotivModel.Photo">
+              <MappingFragment StoreEntitySet="Photos">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="VehicleID" ColumnName="VehicleID" />
+                <ScalarProperty Name="PhotoPath" ColumnName="PhotoPath" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RentedPaypments">
+            <EntityTypeMapping TypeName="ONROtomotivModel.RentedPaypment">
+              <MappingFragment StoreEntitySet="RentedPaypments">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="RentedOrdersID" ColumnName="RentedOrdersID" />
+                <ScalarProperty Name="CustomerPaypmentMade" ColumnName="CustomerPaypmentMade" />
+                <ScalarProperty Name="CustomerPaypmentMadeDate" ColumnName="CustomerPaypmentMadeDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RentInfos">
+            <EntityTypeMapping TypeName="ONROtomotivModel.RentInfo">
+              <MappingFragment StoreEntitySet="RentInfos">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="VehicleID" ColumnName="VehicleID" />
+                <ScalarProperty Name="ListingPrice" ColumnName="ListingPrice" />
+                <ScalarProperty Name="DiscountPrice" ColumnName="DiscountPrice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RentOrders">
+            <EntityTypeMapping TypeName="ONROtomotivModel.RentOrder">
+              <MappingFragment StoreEntitySet="RentOrders">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="VehicleID" ColumnName="VehicleID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="RentedPrice" ColumnName="RentedPrice" />
+                <ScalarProperty Name="RentalStartDate" ColumnName="RentalStartDate" />
+                <ScalarProperty Name="RentalEndDate" ColumnName="RentalEndDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SaleInfos">
+            <EntityTypeMapping TypeName="ONROtomotivModel.SaleInfo">
+              <MappingFragment StoreEntitySet="SaleInfos">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="VehicleID" ColumnName="VehicleID" />
+                <ScalarProperty Name="ListingPrice" ColumnName="ListingPrice" />
+                <ScalarProperty Name="DiscountPrice" ColumnName="DiscountPrice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SecuritySpecs">
+            <EntityTypeMapping TypeName="ONROtomotivModel.SecuritySpec">
+              <MappingFragment StoreEntitySet="SecuritySpecs">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="VehicleID" ColumnName="VehicleID" />
+                <ScalarProperty Name="ABC" ColumnName="ABC" />
+                <ScalarProperty Name="ABS" ColumnName="ABS" />
+                <ScalarProperty Name="ASR" ColumnName="ASR" />
+                <ScalarProperty Name="ESP" ColumnName="ESP" />
+                <ScalarProperty Name="Airmatic" ColumnName="Airmatic" />
+                <ScalarProperty Name="EDL" ColumnName="EDL" />
+                <ScalarProperty Name="EBA" ColumnName="EBA" />
+                <ScalarProperty Name="EBD" ColumnName="EBD" />
+                <ScalarProperty Name="TSC" ColumnName="TSC" />
+                <ScalarProperty Name="BAS" ColumnName="BAS" />
+                <ScalarProperty Name="Distronic" ColumnName="Distronic" />
+                <ScalarProperty Name="YokusKalkisDestegi" ColumnName="YokusKalkisDestegi" />
+                <ScalarProperty Name="GeceGorus" ColumnName="GeceGorus" />
+                <ScalarProperty Name="SerittenAyrilmaIkazi" ColumnName="SerittenAyrilmaIkazi" />
+                <ScalarProperty Name="SeritDegistirmeYardimcisi" ColumnName="SeritDegistirmeYardimcisi" />
+                <ScalarProperty Name="Airbag_Surucu" ColumnName="Airbag_Surucu" />
+                <ScalarProperty Name="Airbag_Yolcu" ColumnName="Airbag_Yolcu" />
+                <ScalarProperty Name="Airbag_Yan" ColumnName="Airbag_Yan" />
+                <ScalarProperty Name="Airbag_Diz" ColumnName="Airbag_Diz" />
+                <ScalarProperty Name="Airbag_Perde" ColumnName="Airbag_Perde" />
+                <ScalarProperty Name="Airbag_Tavan" ColumnName="Airbag_Tavan" />
+                <ScalarProperty Name="KorNoktaUyariSistemi" ColumnName="KorNoktaUyariSistemi" />
+                <ScalarProperty Name="LastikArizaGostergesi" ColumnName="LastikArizaGostergesi" />
+                <ScalarProperty Name="YorgunlukTespitSistemi" ColumnName="YorgunlukTespitSistemi" />
+                <ScalarProperty Name="Isofix" ColumnName="Isofix" />
+                <ScalarProperty Name="Alarm" ColumnName="Alarm" />
+                <ScalarProperty Name="MerkeziKilit" ColumnName="MerkeziKilit" />
+                <ScalarProperty Name="Immobilizer" ColumnName="Immobilizer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Series">
+            <EntityTypeMapping TypeName="ONROtomotivModel.Series">
+              <MappingFragment StoreEntitySet="Series">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+                <ScalarProperty Name="SerieName" ColumnName="SerieName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SoldOrders">
+            <EntityTypeMapping TypeName="ONROtomotivModel.SoldOrder">
+              <MappingFragment StoreEntitySet="SoldOrders">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="VehicleID" ColumnName="VehicleID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="SoldPrice" ColumnName="SoldPrice" />
+                <ScalarProperty Name="SoldDate" ColumnName="SoldDate" />
+                <ScalarProperty Name="MonthlyPaypments" ColumnName="MonthlyPaypments" />
+                <ScalarProperty Name="MonthlyPaypmentDate" ColumnName="MonthlyPaypmentDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SoldPaypments">
+            <EntityTypeMapping TypeName="ONROtomotivModel.SoldPaypment">
+              <MappingFragment StoreEntitySet="SoldPaypments">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="SoldOrdersID" ColumnName="SoldOrdersID" />
+                <ScalarProperty Name="PaypmentStatusID" ColumnName="PaypmentStatusID" />
+                <ScalarProperty Name="CustomersPaypmentMade" ColumnName="CustomersPaypmentMade" />
+                <ScalarProperty Name="CustomerPaypmentDue" ColumnName="CustomerPaypmentDue" />
+                <ScalarProperty Name="CustomersPaypmentMadeDate" ColumnName="CustomersPaypmentMadeDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sub_Model">
+            <EntityTypeMapping TypeName="ONROtomotivModel.Sub_Model">
+              <MappingFragment StoreEntitySet="Sub_Model">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+                <ScalarProperty Name="SerieID" ColumnName="SerieID" />
+                <ScalarProperty Name="ModelID" ColumnName="ModelID" />
+                <ScalarProperty Name="Sub_ModelName" ColumnName="Sub_ModelName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="ONROtomotivModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TransmissionTypes">
+            <EntityTypeMapping TypeName="ONROtomotivModel.TransmissionType">
+              <MappingFragment StoreEntitySet="TransmissionType">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TransmissionTypeName" ColumnName="TransmissionTypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vehicles">
+            <EntityTypeMapping TypeName="ONROtomotivModel.Vehicle">
+              <MappingFragment StoreEntitySet="Vehicles">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+                <ScalarProperty Name="SerieID" ColumnName="SerieID" />
+                <ScalarProperty Name="ModelID" ColumnName="ModelID" />
+                <ScalarProperty Name="Sub_ModelID" ColumnName="Sub_ModelID" />
+                <ScalarProperty Name="FuelTypeID" ColumnName="FuelTypeID" />
+                <ScalarProperty Name="TransmissionTypeID" ColumnName="TransmissionTypeID" />
+                <ScalarProperty Name="BodyTypeID" ColumnName="BodyTypeID" />
+                <ScalarProperty Name="WheelDriveTypeID" ColumnName="WheelDriveTypeID" />
+                <ScalarProperty Name="ColorID" ColumnName="ColorID" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="ListingDate" ColumnName="ListingDate" />
+                <ScalarProperty Name="KM" ColumnName="KM" />
+                <ScalarProperty Name="EngineCapacity" ColumnName="EngineCapacity" />
+                <ScalarProperty Name="EngineHP" ColumnName="EngineHP" />
+                <ScalarProperty Name="Warranty" ColumnName="Warranty" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="Trade" ColumnName="Trade" />
+                <ScalarProperty Name="Condition" ColumnName="Condition" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="MasterPhotoPath" ColumnName="MasterPhotoPath" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WheelDriveTypes">
+            <EntityTypeMapping TypeName="ONROtomotivModel.WheelDriveType">
+              <MappingFragment StoreEntitySet="WheelDriveTypes">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="WheelDriveTypeName" ColumnName="WheelDriveTypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,254 @@
+﻿
+@{
+    ViewBag.Title = "KarsilastirmaEski";
+    Layout = "~/Shared/_LayoutKarsilastirma.cshtml";
+}
+@model List<Vehicle>
+
+@section Head{
+    <style>
+        img.alper {
+            height:293px !important;
+            max-height:293px !important;
+        }
+    </style>
+}
+
+@if (Model.Count == 0)
+{
+    <div>
+        <form action="/Home/KarsilastirmaEkle/" method="post">
+            <select name="ddlArac">
+                @foreach (Vehicle item in ViewBag.Araclar)
+                {
+                    <option>@item.ProductName</option>
+                }
+            </select>
+            <input type="submit" name="name" value="Ekle" />
+        </form>
+    </div>
+}
+else if (Model.Count == 1)
+{
+    <div>
+        <form action="/Home/KarsilastirmaEkle/" method="post">
+            <select name="ddlArac">
+                @foreach (Vehicle item in ViewBag.Araclar)
+                {
+                    <option>@item.ProductName</option>
+                }
+            </select>
+            <input type="submit" name="name" value="Ekle" />
+        </form>
+    </div>
+
+    <div class="row">
+        @foreach (Vehicle item in Model)
+        {
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="porche margin-bottom-25">
+                    <div class="porche-header padding-top-15 padding-bottom-10">
+                        <span>@item.ProductName</span>
+                        <strong>@item.SaleInfos.Select(x => x.ListingPrice).FirstOrDefault().ToString("c2")</strong>
+                    </div>
+                    <div class="porche-img padding-bottom-15"> <img class="alper" src="@item.MasterPhotoPath" alt="" ></div>
+                    <div class="car-detail clearfix">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td>Marka:</td>
+                                        <td>@item.Brand.BrandName</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Model:</td>
+                                        <td>@item.Model.ModelName</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Kasa Tipi:</td>
+                                        <td>@item.BodyType.BodyTypeName</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Vites:</td>
+                                        <td>@item.TransmissionType.TransmissionTypeName</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Çekiş:</td>
+                                        <td>@item.WheelDriveType.WheelDriveTypeName</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Renk:</td>
+                                        <td>@item.Color.ColorName</td>
+                                    </tr>
+                                    <tr>
+                                        <td>KM:</td>
+                                        <td>@item.KM</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Motor Hacmi:</td>
+                                        <td>@item.EngineCapacity</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Motor Gücü:</td>
+                                        <td>@item.EngineHP</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Yakıt:</td>
+                                        <td>@item.FuelType.FuelTypeName</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Durum:</td>
+                                        @if (item.Condition == true)
+                                        {
+                                            <td>İkinci El</td>
+                                        }
+                                        else
+                                        {
+                                            <td>Sıfır</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>Takas:</td>
+                                        @if (item.Trade == true)
+                                        {
+                                            <td>Var</td>
+                                        }
+                                        else
+                                        {
+                                            <td>Yok</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>Garanti:</td>
+                                        @if (item.Warranty == true)
+                                        {
+                                            <td>Var</td>
+                                        }
+                                        else
+                                        {
+                                            <td>Yok</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>Plaka/Uyruk:</td>
+                                        <td>@item.Region</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="porche-footer margin-top-25 padding-top-20 padding-bottom-15">
+                            <a style="color: #337ab7; text-decoration: none; text-decoration: underline;" href="/Home/KarsilastirmadanSil/@item.ID">Karşılaştırmadan Sil</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <div class="row">
+        @foreach (Vehicle item in Model)
+        {
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="porche margin-bottom-25">
+                    <div class="porche-header padding-top-15 padding-bottom-10">
+                        <span>@item.ProductName</span>
+                        <strong>@item.SaleInfos.Select(x => x.ListingPrice).FirstOrDefault().ToString("c2")</strong>
+                    </div>
+                    <div class="porche-img padding-bottom-15"> <img class="alper" src="@item.MasterPhotoPath" alt=""></div>
+                    <div class="car-detail clearfix">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td>Marka:</td>
+                                        <td>@item.Brand.BrandName</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Model:</td>
+                                        <td>@item.Model.ModelName</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Kasa Tipi:</td>
+                                        <td>@item.BodyType.BodyTypeName</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Vites:</td>
+                                        <td>@item.TransmissionType.TransmissionTypeName</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Çekiş:</td>
+                                        <td>@item.WheelDriveType.WheelDriveTypeName</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Renk:</td>
+                                        <td>@item.Color.ColorName</td>
+                                    </tr>
+                                    <tr>
+                                        <td>KM:</td>
+                                        <td>@item.KM</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Motor Hacmi:</td>
+                                        <td>@item.EngineCapacity</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Motor Gücü:</td>
+                                        <td>@item.EngineHP</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Yakıt:</td>
+                                        <td>@item.FuelType.FuelTypeName</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Durum:</td>
+                                        @if (item.Condition == true)
+                                        {
+                                            <td>İkinci El</td>
+                                        }
+                                        else
+                                        {
+                                            <td>Sıfır</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>Takas:</td>
+                                        @if (item.Trade == true)
+                                        {
+                                            <td>Var</td>
+                                        }
+                                        else
+                                        {
+                                            <td>Yok</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>Garanti:</td>
+                                        @if (item.Warranty == true)
+                                        {
+                                            <td>Var</td>
+                                        }
+                                        else
+                                        {
+                                            <td>Yok</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>Plaka/Uyruk:</td>
+                                        <td>@item.Region</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="porche-footer margin-top-25 padding-top-20 padding-bottom-15">
+                            <a style="color: #337ab7; text-decoration: none; text-decoration: underline;" href="/Home/KarsilastirmadanSil/@item.ID">Karşılaştırmadan Sil</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+
+
